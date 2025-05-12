@@ -8,15 +8,75 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
-const Brand: React.FC = () => {
+const Assistant: React.FC = () => {
     const history = useHistory();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
+
+    const list = [
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí với 3 năm kinh nghiệp"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí siêu dễ thương, có 3 năm kinh nghiệm"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí với 3 năm kinh nghiệp"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí siêu dễ thương, có 3 năm kinh nghiệm"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí siêu dễ thương, có 3 năm kinh nghiệm"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí siêu dễ thương, có 3 năm kinh nghiệm"
+
+        },
+        {
+            id: 1,
+            name: "Trợ lí Marry",
+            age: 25,
+            avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDO27yfAZmM1Xu4sR2tixZ8Moq-rOxlbKDXg&s",
+            describe: "Là một cô trợ lí siêu dễ thương, có 3 năm kinh nghiệm"
+
+        }
+    ]
     function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
             // Any calls to load data go here
             event.detail.complete();
         }, 2000);
     }
+
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -42,18 +102,30 @@ const Brand: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Nhà hàng</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Trợ lý</div>
                     </IonRow>
-                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
-                        <img src='https://happy-booking.eclo.io/datas/3.png' className='w-100 rounded-4'></img>
-                        <div className='fw-bold fs-6 mt-3'>Drinking Session</div>
-                        <div className='fs-13 mt-1'>90-92 Lê Thị Riêng, Quận 1, Thành phố Hồ Chí Minh</div>
-                    </IonCard>
-                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
-                        <img src='https://happy-booking.eclo.io/datas/2.png' className='w-100 rounded-4'></img>
-                        <div className='fw-bold fs-6 mt-3'>Limited Kẩoke</div>
-                        <div className='fs-13 mt-1'>363 Đ. Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1, TP.HCM</div>
-                    </IonCard>
+                    <Swiper
+                        effect={'cards'}
+                        grabCursor={true}
+                        modules={[EffectCards]}
+                        className="mySwiper mt-3"
+                    >
+                        {list && list.map((assistant, index) => (
+                            <SwiperSlide key={index} >
+                                <div className="card-container shadow-sm">
+                                    <img src={assistant.avatar} className="  border-secondary w-100 rounded-3" style={{ margin: "0 auto" }} />
+                                    <div className='fs-15 mt-4'>{assistant.name}</div>
+                                    <div className=" fs-13 mt-3">{assistant.describe}</div>
+
+                                    <IonRow className='d-flex justify-content-center'>
+                                        <button className="p-3 fs-13 px-5 rounded-pill bg-pink text-white mt-4 shadow-sm" onClick={() => {
+
+                                        }}>BOOK ME NOW</button>
+                                    </IonRow>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </IonGrid>
 
             </IonContent>
@@ -90,4 +162,4 @@ const Brand: React.FC = () => {
     );
 };
 
-export default Brand;
+export default Assistant;

@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
 import './page.css';
 import { accessibilityOutline, appsOutline, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, calendarClearOutline, carOutline, closeOutline, fastFoodOutline, gridOutline, notificationsOutline, optionsOutline, peopleOutline, qrCodeOutline, searchOutline, ticketOutline, womanOutline } from 'ionicons/icons';
 // import Calendar from 'react-calendar';
@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCards } from 'swiper/modules';
 import moment from 'moment';
 import { toggleDarkMode } from '../theme/theme';
-import { menuController } from '@ionic/core';
+import { menuController, RefresherEventDetail } from '@ionic/core';
 const Home: React.FC = () => {
     const week = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
     const [calendarDays, setCalendarDays] = useState<moment.Moment[]>([]);
@@ -89,9 +89,15 @@ const Home: React.FC = () => {
         setIsModalOpenSee(false);
         history.push(e);
         console.log(e);
-        
+
     };
 
+    function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+        setTimeout(() => {
+            // Any calls to load data go here
+            event.detail.complete();
+        }, 2000);
+    }
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -108,8 +114,11 @@ const Home: React.FC = () => {
                     </IonRow>
                 </IonToolbar>
             </IonHeader>
-            <IonContent fullscreen className='page-background'>
-                <IonGrid className='p-3'>
+            <IonContent fullscreen>
+                <IonRefresher  slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
+                <IonGrid className='p-3 pt-4'>
                     <IonToggle checked={darkMode} onIonChange={handleToggle}>
                         Dark Mode
                     </IonToggle>
@@ -167,7 +176,7 @@ const Home: React.FC = () => {
                     </IonRow>
                     <IonRow className='mt-2'>
                         <IonCol size='3' className='d-flex justify-content-center'>
-                            <div  onClick={()=>{handleClick("/booking-table")}}>
+                            <div onClick={() => { handleClick("/booking-table") }}>
                                 <div className='rounded-circle bg-white shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                     <IonIcon icon={calendarClearOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                                 </div>
@@ -353,7 +362,7 @@ const Home: React.FC = () => {
                 <div className='text-end me-3 mt-3' ><IonIcon onClick={() => setIsModalOpenSee(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></div>
                 <IonRow className='mt-2 pb-4'>
                     <IonCol size='3' className='d-flex justify-content-center'>
-                        <div onClick={()=>{handleClick("/booking-table")}}>
+                        <div onClick={() => { handleClick("/booking-table") }}>
                             <div className='rounded-circle bg-white shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={calendarClearOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
@@ -377,12 +386,12 @@ const Home: React.FC = () => {
                         </Link>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
-                        <div>
+                        <Link to='/assistant' onClick={() => setIsModalOpenSee(false)}>
                             <div className='rounded-circle bg-white shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={womanOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
                             <div className='fs-13 mt-1 text-center'>Trợ lý</div>
-                        </div>
+                        </Link>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
                         <div>
@@ -432,7 +441,7 @@ const Home: React.FC = () => {
             <IonModal isOpen={isModalOpenSearchMonth} onDidDismiss={() => setIsModalOpenSearchMonth(false)} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className='d-flex justify-content-between mx-3 mt-3' >
                     <div className='fs-15 '>Tìm lịch</div>
-                    <IonIcon onClick={() => dismiss()} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon>
+                    <IonIcon onClick={() => setIsModalOpenSearchMonth(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon>
                 </div>
                 <IonGrid className='p-3 m-0'>
                     <IonRow>

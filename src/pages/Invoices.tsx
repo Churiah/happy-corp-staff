@@ -1,4 +1,4 @@
-import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar } from '@ionic/react';
+import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar, RefresherEventDetail } from '@ionic/react';
 import './page.css';
 import { businessOutline, calendarClearOutline, calendarNumberOutline, calendarOutline, chevronBackOutline, chevronForwardOutline, closeOutline, cloudDoneOutline, notificationsOutline, optionsOutline, shareSocialOutline } from 'ionicons/icons';
 
@@ -14,6 +14,12 @@ const Invoices: React.FC = () => {
     }
 
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
+    function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+        setTimeout(() => {
+            // Any calls to load data go here
+            event.detail.complete();
+        }, 2000);
+    }
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -31,7 +37,10 @@ const Invoices: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen className='page-background'>
-                <IonGrid className='p-3'>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
+                <IonGrid className='p-3 pt-4'>
                     <IonRow className='d-flex align-items-center '>
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
@@ -279,7 +288,7 @@ const Invoices: React.FC = () => {
 
                 </IonGrid>
             </IonContent>
-            <IonModal isOpen={isModalOpenDetail} onDidDismiss={()=>{setIsModalOpenDetail(false)}} initialBreakpoint={1} breakpoints={[0, 1]}>
+            <IonModal isOpen={isModalOpenDetail} onDidDismiss={() => { setIsModalOpenDetail(false) }} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className=' p-0 pb-3' >
 
                     <div className='text-end me-3 mt-3 fixed-header' ><IonIcon onClick={() => setIsModalOpenDetail(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></div>

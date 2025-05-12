@@ -163,21 +163,20 @@ ion-segment-button.segment-button-checked::part(native) {
 /* styles.css */
 .card-container {
     /* background: #1c1c1c; */
-    background: #333333;
+    background: white;
     border-radius: 20px;
     padding: 20px;
-    color: white;
     text-align: center;
-    height: 450px;
+    /* height: 450px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
 }
 
 /* Các slide bị đè */
 .swiper-slide:not(.swiper-slide-active) .card-container {
-    background-color: rgba(43, 43, 43, 0.623);
+    background-color: rgba(216, 214, 214, 0.623);
     color: white;
 }
 
@@ -187,3 +186,24 @@ ion-segment-button.segment-button-checked::part(native) {
     line-height: 1.5em;
     margin-top: 10px;
 }
+
+ion-checkbox {
+    --size: 22px;
+    /* --checkbox-background-checked: blue; */
+}
+
+ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 1px solid gainsboro;
+}
+
+ion-refresher,
+ion-refresher-content {
+    background: transparent !important;
+    --background: transparent !important;
+}
+ion-content::part(scroll) {
+    margin-top: -10px;
+    background: var(--background) !important;
+  }
+

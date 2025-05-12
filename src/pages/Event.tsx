@@ -11,7 +11,7 @@ import { useHistory } from 'react-router';
 const Event: React.FC = () => {
     const history = useHistory();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
- function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
             // Any calls to load data go here
             event.detail.complete();
@@ -34,9 +34,9 @@ const Event: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen className='page-background'>
-                <IonRefresher  slot="fixed" onIonRefresh={handleRefresh}>
-                                    <IonRefresherContent></IonRefresherContent>
-                                </IonRefresher>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
                     <IonRow className='d-flex align-items-center '>
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
@@ -44,7 +44,7 @@ const Event: React.FC = () => {
                         </button>
                         <div className=' fw-bold ' style={{ fontSize: "17px" }}>Sự kiện</div>
                     </IonRow>
-                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={()=>{setIsModalOpenDetail(true)}}>
+                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
                         <div className='fw-bold fs-15'>Drinking Session</div>
                         <img src='https://happy-booking.eclo.io/datas/3.png' className='w-100 rounded-4 mt-2'></img>
                     </IonCard>

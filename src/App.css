@@ -1,5 +1,6 @@
 .custom-tabbar {
-    --background: #eaf6fa;
+    --background: var(--ion-footer-background);
+    --color: var(--ion-footer-color);
     --border: none;
     display: flex;
     justify-content: space-around;
@@ -12,10 +13,7 @@
     contain: none !important;
 }
 
-.dark-mode .custom-tabbar {
-    --background: #1b1b1b;
-    --color: white;
-}
+
 
 
 .custom-tabbar ion-tab-button.tab-selected {
@@ -28,7 +26,6 @@
 
 .ion-tab-button-custom ion-icon {
     font-size: 20px;
-    color: #333;
     transition:
         color 0.5s ease,
         background-color 0.5s ease,
@@ -37,7 +34,6 @@
 }
 .dark-mode .ion-tab-button-custom ion-icon {
     font-size: 20px;
-    color: white;
     transition:
         color 0.5s ease,
         background-color 0.5s ease,

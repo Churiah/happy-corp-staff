@@ -28,31 +28,66 @@ const RightSideMenu: React.FC = () => {
 
     useEffect(() => {
         const mode = localStorage.getItem("happy-corp-staff-mode");
+        const type = localStorage.getItem("happy-corp-staff-mode-type");
+       
         if (mode !== null) {
             setDarkMode(mode === "true"); // convert string to boolean
             toggleDarkMode(mode === "true"); // nếu muốn cập nhật giao diện khi reload
-            if (mode) {
+            if (mode === "true") {
                 document.body.classList.add("dark-mode");
             } else {
                 document.body.classList.remove("dark-mode");
             }
         }
+        if (type === "system") {
+             const applyMode = (isDark: boolean) => {
+            setDarkMode(isDark);
+            toggleDarkMode(isDark);
+            document.body.classList.toggle("dark-mode", isDark);
+        };
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            applyMode(prefersDark);
+
+            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+            const handleChange = (e: MediaQueryListEvent) => {
+                applyMode(e.matches);
+            };
+            console.log(456);
+
+            mediaQuery.addEventListener("change", handleChange);
+
+            return () => {
+                mediaQuery.removeEventListener("change", handleChange);
+            };
+        }
     }, []);
 
-    const handleToggleCustom = (enabled: boolean) => {
-    
-        localStorage.setItem("happy-corp-staff-mode", String(enabled)); // lưu dưới dạng chuỗi "true"/"false"
-        setDarkMode(enabled);
-        toggleDarkMode(enabled);
-        if (enabled) {
-            document.body.classList.add("dark-mode");
+    const handleToggleCustom = (value: boolean | 'system') => {
+        if (value === 'system') {
+            localStorage.removeItem("happy-corp-staff-mode");
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setDarkMode(isDark);
+            toggleDarkMode(isDark);
+
+            document.body.classList.toggle("dark-mode", isDark);
+            localStorage.setItem("happy-corp-staff-mode", String(isDark));
+            localStorage.setItem("happy-corp-staff-mode-type", "system");
+            console.log(123, isDark);
+
+            return;
         } else {
-            document.body.classList.remove("dark-mode");
+            localStorage.setItem("happy-corp-staff-mode-type", "mode");
+            localStorage.setItem("happy-corp-staff-mode", String(value));
+            setDarkMode(value);
+            toggleDarkMode(value);
+            document.body.classList.toggle("dark-mode", value);
         }
+
 
     };
 
-  
+
+
 
     return (
         <IonMenu side="end" contentId="main-content" menuId="end" type="overlay" style={{ backdropFilter: "blur(5px)" }}>
@@ -113,8 +148,8 @@ const RightSideMenu: React.FC = () => {
                         <IonIcon icon={moonOutline} className='me-2'></IonIcon>
                         Tối
                     </IonRow>
-                   
-                    <IonRow className='d-flex align-items-center mt-4'>
+
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom('system')}>
                         <IonIcon icon={phonePortraitOutline} className='me-2'></IonIcon>
                         Hệ thống
                     </IonRow>

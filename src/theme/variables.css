@@ -22,7 +22,11 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-color: black;
     --ion-alert-background: white;
 
-    --ion-menu-background:rgba(255, 255, 255, 0.75);
+    --ion-menu-background: rgba(255, 255, 255, 0.75);
+
+    /* footer */
+    --ion-footer-background: #eaf6fa;
+    --ion-footer-color: black;
 }
 
 body.dark {
@@ -32,6 +36,9 @@ body.dark {
     --ion-card-color: white;
 
     --ion-alert-background: rgba(0, 0, 0, 0.95);
-    --ion-menu-background:rgba(0, 0, 0, 0.75);
+    --ion-menu-background: rgba(0, 0, 0, 0.75);
+    /* footer */
+    --ion-footer-background: #1b1b1b;
+    --ion-footer-color: white;
 
 }

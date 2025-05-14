@@ -107,12 +107,14 @@ ion-modal .ion-backdrop {
     padding-bottom: 10px;
 }
 
+
 .bg-switch-box {
     background-color: white;
 }
 
 .dark-mode .bg-switch-box {
     background-color: rgba(24, 24, 24, 0.75);
+    color: white;
 }
 
 .bg-input-search {
@@ -236,4 +238,13 @@ ion-refresher-content {
 ion-content::part(scroll) {
     margin-top: -10px;
     background: var(--background) !important;
+}
+
+.bg-input-chat{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+.dark-mode .bg-input-chat{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }

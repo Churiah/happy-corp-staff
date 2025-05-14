@@ -98,8 +98,8 @@ const Home: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
                         <IonIcon icon={searchOutline} className="ms-3 me-2 " style={{ fontSize: '20px' }} />
                         <input
                             type="text"
-                            className="form-control border-0 shadow-none bg-input-search"
+                            className="form-control border-0 shadow-none bg-switch-box"
                             placeholder="Tìm kiếm"
                             style={{
                                 flex: 1,
@@ -208,7 +208,7 @@ const Home: React.FC = () => {
                             <div onClick={() => { setIsModalOpenSearchMonth(true) }} className="d-flex align-items-center p-2 bg-switch-box rounded-pill shadow-sm w-100 fs-13" style={{ height: '50px' }}>
                                 <input
                                     type="text"
-                                    className="form-control border-0 shadow-none fs-13 fw-bold bg-input-search"
+                                    className="form-control border-0 shadow-none fs-13 fw-bold bg-switch-box"
                                     placeholder="Tìm kiếm"
                                     style={{
                                         flex: 1,
@@ -437,7 +437,7 @@ const Home: React.FC = () => {
                 <IonGrid className='p-3 m-0'>
                     <IonRow>
                         <IonCol size='6'>
-                            <select className='p-2 rounded-4 fs-13 border border-1 w-100 bg-input-search' value={selectedMonth}
+                            <select className='p-2 rounded-4 fs-13 border border-1 w-100 bg-light' value={selectedMonth}
                                 onChange={(e) => setSelectedMonth(parseInt(e.target.value))}>
                                 {moment.months().map((month, idx) => (
                                     <option key={idx} value={idx}>{month}</option>
@@ -446,7 +446,7 @@ const Home: React.FC = () => {
 
                         </IonCol>
                         <IonCol size='6'>
-                            <select className='p-2 rounded-4 fs-13 border border-1 w-100 bg-input-search' value={selectedYear}
+                            <select className='p-2 rounded-4 fs-13 border border-1 w-100' value={selectedYear}
                                 onChange={(e) => setSelectedYear(parseInt(e.target.value))}>
                                 {Array.from({ length: 10 }, (_, i) => {
                                     const year = moment().year() - 5 + i;

@@ -48,6 +48,96 @@ const ChatDetail: React.FC = () => {
             type: 1,
             content: "Xin chào tôi có thể giúp gì cho bạn",
             date: "14:00 12/05/2025",
+        },
+        {
+            id: 1,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 2,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 3,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 4,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 5,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 1,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 2,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 3,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 4,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 5,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 1,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 2,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 3,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 4,
+            type: 2,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
+        },
+        {
+            id: 5,
+            type: 1,
+            content: "Xin chào tôi có thể giúp gì cho bạn",
+            date: "14:00 12/05/2025",
         }
     ]
 
@@ -88,7 +178,7 @@ const ChatDetail: React.FC = () => {
                                                 <div>
                                                     <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='me-2 rounded-circle' style={{ width: "30px", height: "30px" }}></img>
                                                 </div>
-                                                <div style={{ width: " auto", maxWidth: "85%" }} className='text-white position-relative  rounded-2 '>
+                                                <div style={{ width: " auto", maxWidth: "85%" }} className=' position-relative  rounded-2 '>
                                                     <div className='fs-14 ' style={{ fontWeight: "300" }} >{message.content}</div>
                                                 </div>
                                             </div>
@@ -103,7 +193,7 @@ const ChatDetail: React.FC = () => {
                                                 <div>
                                                     <IonIcon icon={checkmarkDoneOutline} size="12px" color='green' className='me-2'></IonIcon>
                                                 </div>
-                                                <div style={{ width: " auto", maxWidth: "85%" }} className='bg-dark bg-opacity-75 text-white position-relative p-2 rounded-2 '>
+                                                <div style={{ width: " auto", maxWidth: "85%" }} className='bg-switch-box  position-relative p-2 rounded-2 '>
                                                     <div className='fs-14 ' style={{ fontWeight: "300" }} >{message.content}</div>
                                                 </div>
                                             </div>
@@ -136,20 +226,18 @@ const ChatDetail: React.FC = () => {
 
             </IonContent>
             <IonFooter>
-                <IonCard className='m-0 p-2 rounded-0'>
-
-
-                    <div className='d-flex  align-items-center text-white mb-1'>
+                <IonCard className='m-0 p-2 rounded-0' style={{ backdropFilter: "blur(50px)" }}>
+                    <div className='d-flex  align-items-center mx-2 mb-1'>
                         <IonIcon icon={imageOutline} style={{ fontSize: "25px" }}></IonIcon>
                         <IonIcon icon={linkOutline} style={{ fontSize: "25px" }} className='ms-3'></IonIcon>
 
                     </div>
-                    <div className="d-flex align-items-center px-2 rounded-3 shadow-sm w-100 my-2">
+                    <div className="d-flex align-items-center px-2 bg-input-chat  rounded-pill shadow-sm w-100 my-2">
                        
                         <input
                             type="text"
-                            className="form-control rounded-3 p-2 border-0 shadow-none bg-secondary"
-                            placeholder=""
+                            className="form-control rounded-5 p-2 border-0 shadow-none bg-input-chat "
+                            placeholder="Viết nội dung"
                             style={{
                                 flex: 1,
                                 borderRadius: '50px',

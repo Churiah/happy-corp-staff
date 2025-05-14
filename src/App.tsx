@@ -66,7 +66,7 @@ const TabsWithRoutes: React.FC = () => {
 
   const currentPath = location.pathname;
   console.log(currentPath);
-  
+
   return (
     <IonSplitPane contentId="main-content">
       <RightSideMenu />

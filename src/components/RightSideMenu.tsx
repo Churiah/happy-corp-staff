@@ -9,85 +9,52 @@ import {
     IonGrid,
     IonFooter,
     IonMenuToggle,
-    IonToggle
+    IonToggle,
+    IonSelect,
+    IonSelectOption
 } from '@ionic/react';
 import { notificationsOutline, personOutline, settingsOutline, listOutline, sunnyOutline, moonOutline, phonePortraitOutline } from 'ionicons/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
 import { useEffect, useState } from 'react';
 import { toggleDarkMode } from '../theme/theme';
+import { useTheme } from '../context/ThemeContext';
 
 const RightSideMenu: React.FC = () => {
     const history = useHistory();
-
+    const { theme, setTheme } = useTheme();
     const logout = () => {
         history.push('/login');
         console.log(123);
     };
-    const [darkMode, setDarkMode] = useState(false); // dùng boolean thay vì chuỗi
 
     useEffect(() => {
-        const mode = localStorage.getItem("happy-corp-staff-mode");
-        const type = localStorage.getItem("happy-corp-staff-mode-type");
-       
+        const mode = localStorage.getItem("dark-mode");
+
         if (mode !== null) {
-            setDarkMode(mode === "true"); // convert string to boolean
-            toggleDarkMode(mode === "true"); // nếu muốn cập nhật giao diện khi reload
             if (mode === "true") {
-                document.body.classList.add("dark-mode");
+                setTheme('light');
+            } else if (mode === "false") {
+                setTheme('dark');
             } else {
-                document.body.classList.remove("dark-mode");
+                setTheme('system');
             }
         }
-        if (type === "system") {
-             const applyMode = (isDark: boolean) => {
-            setDarkMode(isDark);
-            toggleDarkMode(isDark);
-            document.body.classList.toggle("dark-mode", isDark);
-        };
-            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-            applyMode(prefersDark);
-
-            const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-            const handleChange = (e: MediaQueryListEvent) => {
-                applyMode(e.matches);
-            };
-            console.log(456);
-
-            mediaQuery.addEventListener("change", handleChange);
-
-            return () => {
-                mediaQuery.removeEventListener("change", handleChange);
-            };
-        }
+        
     }, []);
 
-    const handleToggleCustom = (value: boolean | 'system') => {
-        if (value === 'system') {
-            localStorage.removeItem("happy-corp-staff-mode");
-            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setDarkMode(isDark);
-            toggleDarkMode(isDark);
+    const handleToggleCustom = (type: string) => {
 
-            document.body.classList.toggle("dark-mode", isDark);
-            localStorage.setItem("happy-corp-staff-mode", String(isDark));
-            localStorage.setItem("happy-corp-staff-mode-type", "system");
-            console.log(123, isDark);
+        localStorage.setItem("dark-mode", String(type)); // lưu dưới dạng chuỗi "true"/"false"
 
-            return;
+        if (type == "true") {
+            setTheme('dark');
+        } else if (type === "false") {
+            setTheme('light');
         } else {
-            localStorage.setItem("happy-corp-staff-mode-type", "mode");
-            localStorage.setItem("happy-corp-staff-mode", String(value));
-            setDarkMode(value);
-            toggleDarkMode(value);
-            document.body.classList.toggle("dark-mode", value);
+            setTheme('system');
         }
-
-
     };
-
-
-
 
     return (
         <IonMenu side="end" contentId="main-content" menuId="end" type="overlay" style={{ backdropFilter: "blur(5px)" }}>
@@ -140,16 +107,16 @@ const RightSideMenu: React.FC = () => {
                     <IonRow className='fs-11 mt-4'>
                         Giao diện
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom(false)}>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom("false")}>
                         <IonIcon icon={sunnyOutline} className='me-2'></IonIcon>
                         Sáng
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom(true)}>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom("true")}>
                         <IonIcon icon={moonOutline} className='me-2'></IonIcon>
                         Tối
                     </IonRow>
 
-                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom('system')}>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom("system")}>
                         <IonIcon icon={phonePortraitOutline} className='me-2'></IonIcon>
                         Hệ thống
                     </IonRow>
@@ -170,9 +137,6 @@ const RightSideMenu: React.FC = () => {
                     <IonMenuToggle autoHide={true}>
                         <button onClick={() => { logout() }} className='rounded-pill p-3 text-white w-100' style={{ backgroundColor: "#f07" }}>Đăng xuất</button>
                     </IonMenuToggle>
-
-
-
                 </IonGrid>
             </IonContent>
             <IonFooter>

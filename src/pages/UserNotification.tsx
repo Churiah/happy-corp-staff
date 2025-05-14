@@ -24,8 +24,8 @@ const UserNotification: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -40,7 +40,7 @@ const UserNotification: React.FC = () => {
                 <IonGrid className='p-3 pt-4'>
 
 
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <input type='text' className=' rounded-3 fs-13 border border-0 w-100' style={{ backgroundColor: "#edf2ff", padding: "10px" }} placeholder='Nhập để tìm kiếm...'></input>
                         <IonList>
                             <IonItemSliding>
@@ -60,7 +60,7 @@ const UserNotification: React.FC = () => {
                     </IonCard>
 
                     <IonRow className='fs-13 fw-bold mt-3'>Tài khoản</IonRow>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center'>
                             <IonIcon icon={personOutline} className='me-2'></IonIcon> Thông tin
                         </IonRow>

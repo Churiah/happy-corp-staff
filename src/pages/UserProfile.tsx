@@ -54,8 +54,8 @@ const UserProfile: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -74,7 +74,7 @@ const UserProfile: React.FC = () => {
                     <div className='fw-bold fs-4 text-center mt-3'>Demo</div>
                     <div className='text-center fs-15 mt-2'>demo@eclo.vn</div>
 
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow><span className='fw-bold'>Mã của bạn :</span>#002</IonRow>
                         <IonRow className='mt-3'><span className='fw-bold'>Họ và tên :</span>Demo</IonRow>
                         <IonRow className='mt-3'><span className='fw-bold'>Email :</span>demo@eclo.vn</IonRow>
@@ -84,7 +84,7 @@ const UserProfile: React.FC = () => {
                         <IonRow className='mt-3'><span className='fw-bold'>Giới tính :</span>Nữ</IonRow>
                         <IonRow className='mt-3'><span className='fw-bold'>Ngày đăng ký :</span>#002</IonRow>
                     </IonCard>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center' onClick={() => setIsModalOpenChangePass(true)}>
                             <IonIcon icon={keyOutline} className='me-2'></IonIcon> Đổi mật khẩu
                         </IonRow>
@@ -94,7 +94,7 @@ const UserProfile: React.FC = () => {
                         </IonRow>
                     </IonCard>
                     <IonRow className='fs-13 fw-bold mt-3'>Tài khoản</IonRow>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center'>
                             <IonIcon icon={personOutline} className='me-2'></IonIcon> Thông tin
                         </IonRow>

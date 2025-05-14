@@ -24,8 +24,8 @@ const Customers: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -44,7 +44,7 @@ const Customers: React.FC = () => {
                         </button>
                         <div className=' fw-bold ' style={{ fontSize: "17px" }}>Khách hàng</div>
                     </IonRow>
-                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm' onClick={() => { setIsModalOpenDetail(true) }}>
                         <IonRow className='d-flex align-items-center justify-content-between'>
                             <div className='d-flex align-items-center'>
                                 <div className='rounded-circle fs-2 fw-bold d-flex justify-content-center text-white align-items-center' style={{ width: "50px", height: "50px", backgroundColor: "#ff8cc8" }}>
@@ -58,7 +58,7 @@ const Customers: React.FC = () => {
                             <IonIcon icon={chevronForwardOutline} style={{ fontSize: "24px" }}></IonIcon>
                         </IonRow>
                     </IonCard>
-                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm' onClick={() => { setIsModalOpenDetail(true) }}>
                         <IonRow className='d-flex align-items-center justify-content-between'>
                             <div className='d-flex align-items-center'>
                                 <div className='rounded-circle fs-2 fw-bold d-flex justify-content-center text-white align-items-center' style={{ width: "50px", height: "50px", backgroundColor: "#ff8cc8" }}>
@@ -72,7 +72,7 @@ const Customers: React.FC = () => {
                             <IonIcon icon={chevronForwardOutline} style={{ fontSize: "24px" }}></IonIcon>
                         </IonRow>
                     </IonCard>
-                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                    <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm' onClick={() => { setIsModalOpenDetail(true) }}>
                         <IonRow className='d-flex align-items-center justify-content-between'>
                             <div className='d-flex align-items-center'>
                                 <div className='rounded-circle fs-2 fw-bold d-flex justify-content-center text-white align-items-center' style={{ width: "50px", height: "50px", backgroundColor: "#ff8cc8" }}>

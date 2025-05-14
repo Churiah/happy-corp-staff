@@ -119,8 +119,8 @@ const History: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -196,15 +196,15 @@ const History: React.FC = () => {
                         <div className="tab-pane active" id="nav-date">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='3' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <div onClick={() => setIsModalOpenSearchDate(true)} className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
+                                    <div onClick={() => setIsModalOpenSearchDate(true)} className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -226,7 +226,7 @@ const History: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='3' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>
@@ -298,15 +298,15 @@ const History: React.FC = () => {
                         <div className="tab-pane " id="nav-week">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='2' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='8'>
-                                    <div className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
+                                    <div className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -328,7 +328,7 @@ const History: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='2' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>
@@ -444,15 +444,15 @@ const History: React.FC = () => {
                         <div className="tab-pane " id="nav-month">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='3' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <div onClick={() => setIsModalOpenSearchMonth(true)} className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
+                                    <div onClick={() => setIsModalOpenSearchMonth(true)} className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -474,7 +474,7 @@ const History: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='3' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>

@@ -24,8 +24,8 @@ const RoomDiagram: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -85,13 +85,13 @@ const RoomDiagram: React.FC = () => {
                                         </IonCard>
                                     </IonCol>
                                     <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
+                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
                                             <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                             <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
                                         </IonCard>
                                     </IonCol>
                                     <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
+                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
                                             <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                             <div className='mt-1 fs-13 fw-bold ms-1'>Happy 4</div>
                                         </IonCard>
@@ -132,13 +132,13 @@ const RoomDiagram: React.FC = () => {
                                         </IonCard>
                                     </IonCol>
                                     <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
+                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
                                             <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                             <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
                                         </IonCard>
                                     </IonCol>
                                     <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
+                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
                                             <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                             <div className='mt-1 fs-13 fw-bold ms-1'>Happy 4</div>
                                         </IonCard>
@@ -171,7 +171,7 @@ const RoomDiagram: React.FC = () => {
                         maxHeight: "85vh"
                     }}>
                         <IonRow className='fw-bold'>Thông tin khách hàng</IonRow>
-                        <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 text-dark mt-3'>
+                        <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13  mt-3'>
                             <IonRow className='d-flex align-items-center justify-content-between p-3'>
                                 Khách hàng <div className='fw-bold'>Mr Nick</div>
                             </IonRow>
@@ -190,7 +190,7 @@ const RoomDiagram: React.FC = () => {
                         </IonCard>
 
                         <IonRow className='fw-bold mt-3'>Thông tin đặt bàn</IonRow>
-                        <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 text-dark mt-3'>
+                        <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13  mt-3'>
                             <IonRow className='d-flex align-items-center justify-content-between p-3'>
                                 Nhà hàng <div className='fw-bold'>90s House</div>
                             </IonRow>
@@ -222,7 +222,7 @@ const RoomDiagram: React.FC = () => {
                         <IonRow className='fw-bold mt-3'>
                             Chi tiết Dịch vụ / Món ăn
                         </IonRow>
-                        <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  text-dark'>
+                        <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  '>
                             <IonRow className='d-flex justify-content-between align-items-center p-3'>
                                 <div className='text-secondary'>
                                     <div>Combo1 <span className='fw-bold text-pink'>x 1</span></div>
@@ -272,7 +272,7 @@ const RoomDiagram: React.FC = () => {
                         <IonRow className='fs-13 fw-bold mt-3'>
                             Thông tin thanh toán
                         </IonRow>
-                        <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  text-dark'>
+                        <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  '>
                             <IonRow className='d-flex justify-content-between align-items-center p-3'>
                                 <div className='text-secondary'>Phương thức thanh toán</div>
                                 <div className='fw-bold'>Tiền mặt</div>
@@ -295,12 +295,12 @@ const RoomDiagram: React.FC = () => {
                         </IonCard>
                         <IonRow className='mt-3'>
                             <IonCol size='6'>
-                                <button className='bg-warning text-dark fw-bold fs-13 p-3 rounded-pill w-100'>
+                                <button className='bg-warning  fw-bold fs-13 p-3 rounded-pill w-100'>
                                     <IonIcon icon={cloudDoneOutline} className='me-2'></IonIcon> Tải hóa đơn
                                 </button>
                             </IonCol>
                             <IonCol size='6'>
-                                <button className='bg-light text-dark fw-bold fs-13 p-3 rounded-pill w-100'>
+                                <button className='bg-light  fw-bold fs-13 p-3 rounded-pill w-100'>
                                     <IonIcon icon={shareSocialOutline} className='me-2'></IonIcon> Chia sẻ
                                 </button>
                             </IonCol>

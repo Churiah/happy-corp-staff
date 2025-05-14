@@ -24,8 +24,8 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -51,7 +51,7 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     </IonRow>
                     <div className='d-flex justify-content-center mt-2 fs-13 fw-bold'>#0000111</div>
                     <IonRow className='fw-bold mt-4'>Thông tin khách hàng</IonRow>
-                    <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 mt-3'>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
                             Khách hàng <div className='fw-bold'>Mr Nick</div>
                         </IonRow>
@@ -70,7 +70,7 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     </IonCard>
 
                     <IonRow className='fw-bold mt-3'>Thông tin đặt bàn</IonRow>
-                    <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 mt-3'>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
                             Nhà hàng <div className='fw-bold'>90s House</div>
                         </IonRow>
@@ -102,9 +102,9 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     <IonRow className='fw-bold mt-3'>
                         Chi tiết Dịch vụ / Món ăn
                     </IonRow>
-                    <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  text-dark'>
+                    <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13 '>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>
+                            <div className=''>
                                 <div>Combo1 <span className='fw-bold text-pink'>x 1</span></div>
                                 <div>4.500.000đ</div>
                             </div>
@@ -112,7 +112,7 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>
+                            <div className=''>
                                 <div>Combo1 <span className='fw-bold text-pink'>x 1</span></div>
                                 <div>4.500.000đ</div>
                             </div>
@@ -152,24 +152,24 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     <IonRow className='fs-13 fw-bold mt-3'>
                         Thông tin thanh toán
                     </IonRow>
-                    <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13  text-dark'>
+                    <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13 '>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>Phương thức thanh toán</div>
+                            <div className=''>Phương thức thanh toán</div>
                             <div className='fw-bold'>Tiền mặt</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>Ngày thanh toán</div>
+                            <div className=''>Ngày thanh toán</div>
                             <div className='fw-bold'>17:00 05/05/2025</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>Lễ tân</div>
+                            <div className=''>Lễ tân</div>
                             <div className='fw-bold'>Ms Xinh</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className='text-secondary'>Người đặt</div>
+                            <div className=''>Người đặt</div>
                             <div className='fw-bold'>Mr Lee</div>
                         </IonRow>
                     </IonCard>

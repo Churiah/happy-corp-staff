@@ -3,7 +3,7 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(82, 82, 82, 0.459);
     transform: translate(-50%, -50%);
     animation: ripple-animation 0.6s ease-out;
     z-index: 9999;

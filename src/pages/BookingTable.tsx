@@ -27,6 +27,7 @@ const BookingTable: React.FC = () => {
                     },
                 },
             ],
+            
         });
     }
 
@@ -37,8 +38,8 @@ const BookingTable: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -56,7 +57,7 @@ const BookingTable: React.FC = () => {
                     </IonRow>
                     {step === 1 && (
                         <>
-                            <IonCard className='m-0 bg-white bg-opacity-25 p-3 py-4 rounded-4 mt-3 fs-13 shadow-sm text-dark'>
+                            <IonCard className='m-0  p-3 py-4 rounded-4 mt-3 fs-13 shadow-sm '>
                                 <IonRow className='d-flex justify-content-between align-items-center'>
                                     <div className='fw-bold'>Thông tin khách hàng</div>
                                     <IonIcon icon={searchOutline} style={{ fontSize: "24px" }}></IonIcon>
@@ -81,7 +82,7 @@ const BookingTable: React.FC = () => {
                     )}
                     {step === 2 && (
                         <>
-                            <IonCard className='m-0 p-3 py-4 bg-white bg-opacity-25 rounded-4 mt-3 fs-13 shadow-sm text-dark'>
+                            <IonCard className='m-0 p-3 py-4  rounded-4 mt-3 fs-13 shadow-sm '>
                                 <div className='fw-bold'>Thông tin đặt phòng</div>
                                 <IonRow className=' fs-13 fw-bold mt-3'>Ngày <span className='text-danger ms-1'>(*)</span></IonRow>
                                 <IonRow className='mt-2'>
@@ -112,7 +113,7 @@ const BookingTable: React.FC = () => {
                     )}
                     {step === 3 && (
                         <>
-                            <IonCard className='m-0 p-3 bg-white bg-opacity-25 py-4 rounded-4 mt-3 fs-13 shadow-sm text-dark'>
+                            <IonCard className='m-0 p-3  py-4 rounded-4 mt-3 fs-13 shadow-sm '>
                                 <div className='fw-bold'>Sơ đồ phòng</div>
                                 <div className="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
                                     <div className="d-flex align-items-center gap-1">
@@ -154,13 +155,13 @@ const BookingTable: React.FC = () => {
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='4'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-white '>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white '>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                                         <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='4'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-warning bg-opacity-75 '>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-warning bg-opacity-75 '>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                                         <div className='mt-1 fs-13 fw-bold ms-1'>Happy 4</div>
                                                     </IonCard>
@@ -201,7 +202,7 @@ const BookingTable: React.FC = () => {
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='4'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark bg-white '>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white '>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
                                                         <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
                                                     </IonCard>
@@ -241,7 +242,7 @@ const BookingTable: React.FC = () => {
                     )}
                     {step === 4 && (
                         <>
-                            <IonCard className='m-0 p-3 bg-white bg-opacity-25 py-4 rounded-4 mt-3 fs-13 shadow text-dark'>
+                            <IonCard className='m-0 p-3  py-4 rounded-4 mt-3 fs-13 shadow'>
                                 <div className='fw-bold'>Món ăn / Dịch vụ</div>
                                 <IonAccordionGroup multiple >
                                     <IonAccordion value='1' className='rounded-4 bg-transparent mt-3 shadow-sm'>
@@ -253,28 +254,28 @@ const BookingTable: React.FC = () => {
                                         <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
                                             <IonRow className='d-flex align-items-center'>
                                                 <IonCol size='6'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2' onClick={() => { setIsModalOpenDetail(true) }}>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
                                                         <div className='mt-1 fw-bold ms-1'>Combo 1</div>
                                                         <div className='ms-1'>4.500.000đ</div>
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='6'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark'>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2'>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
                                                         <div className='mt-1 fw-bold ms-1'>Combo 1</div>
                                                         <div className='ms-1'>4.500.000đ</div>
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='6'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark'>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2'>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
                                                         <div className='mt-1 fw-bold ms-1'>Combo 1</div>
                                                         <div className='ms-1'>4.500.000đ</div>
                                                     </IonCard>
                                                 </IonCol>
                                                 <IonCol size='6'>
-                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2 text-dark'>
+                                                    <IonCard className='shadow-sm rounded-4 m-0 p-2'>
                                                         <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
                                                         <div className='mt-1 fw-bold ms-1'>Combo 1</div>
                                                         <div className='ms-1'>4.500.000đ</div>
@@ -375,7 +376,7 @@ const BookingTable: React.FC = () => {
                     )}
                     {step === 5 && (
                         <>
-                            <IonCard className='m-0 p-3 bg-white bg-opacity-25 py-4 rounded-4 mt-3 fs-13 shadow text-dark'>
+                            <IonCard className='m-0 p-3  py-4 rounded-4 mt-3 fs-13 shadow'>
                                 <div className='fw-bold'>Thông tin thanh toán</div>
                                 <IonRow className=' fs-13 fw-bold mt-3'>Cọc trước</IonRow>
                                 <IonRow className='mt-2'>

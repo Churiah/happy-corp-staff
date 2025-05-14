@@ -8,11 +8,14 @@ import {
     IonRow,
     IonGrid,
     IonFooter,
-    IonMenuToggle
+    IonMenuToggle,
+    IonToggle
 } from '@ionic/react';
 import { notificationsOutline, personOutline, settingsOutline, listOutline, sunnyOutline, moonOutline, phonePortraitOutline } from 'ionicons/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { menuController } from '@ionic/core';
+import { useEffect, useState } from 'react';
+import { toggleDarkMode } from '../theme/theme';
 
 const RightSideMenu: React.FC = () => {
     const history = useHistory();
@@ -21,6 +24,36 @@ const RightSideMenu: React.FC = () => {
         history.push('/login');
         console.log(123);
     };
+    const [darkMode, setDarkMode] = useState(false); // dùng boolean thay vì chuỗi
+
+    useEffect(() => {
+        const mode = localStorage.getItem("happy-corp-staff-mode");
+        if (mode !== null) {
+            setDarkMode(mode === "true"); // convert string to boolean
+            toggleDarkMode(mode === "true"); // nếu muốn cập nhật giao diện khi reload
+            if (mode) {
+                document.body.classList.add("dark-mode");
+            } else {
+                document.body.classList.remove("dark-mode");
+            }
+        }
+    }, []);
+
+    const handleToggleCustom = (enabled: boolean) => {
+    
+        localStorage.setItem("happy-corp-staff-mode", String(enabled)); // lưu dưới dạng chuỗi "true"/"false"
+        setDarkMode(enabled);
+        toggleDarkMode(enabled);
+        if (enabled) {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+
+    };
+
+  
+
     return (
         <IonMenu side="end" contentId="main-content" menuId="end" type="overlay" style={{ backdropFilter: "blur(5px)" }}>
             <IonHeader >
@@ -72,14 +105,15 @@ const RightSideMenu: React.FC = () => {
                     <IonRow className='fs-11 mt-4'>
                         Giao diện
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4'>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom(false)}>
                         <IonIcon icon={sunnyOutline} className='me-2'></IonIcon>
                         Sáng
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4'>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => handleToggleCustom(true)}>
                         <IonIcon icon={moonOutline} className='me-2'></IonIcon>
                         Tối
                     </IonRow>
+                   
                     <IonRow className='d-flex align-items-center mt-4'>
                         <IonIcon icon={phonePortraitOutline} className='me-2'></IonIcon>
                         Hệ thống

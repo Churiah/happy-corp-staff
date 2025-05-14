@@ -24,8 +24,8 @@ const Brand: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -44,12 +44,12 @@ const Brand: React.FC = () => {
                         </button>
                         <div className=' fw-bold ' style={{ fontSize: "17px" }}>Nhà hàng</div>
                     </IonRow>
-                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm ' onClick={() => { setIsModalOpenDetail(true) }}>
                         <img src='https://happy-booking.eclo.io/datas/3.png' className='w-100 rounded-4'></img>
                         <div className='fw-bold fs-6 mt-3'>Drinking Session</div>
                         <div className='fs-13 mt-1'>90-92 Lê Thị Riêng, Quận 1, Thành phố Hồ Chí Minh</div>
                     </IonCard>
-                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm text-dark' onClick={() => { setIsModalOpenDetail(true) }}>
+                    <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm ' onClick={() => { setIsModalOpenDetail(true) }}>
                         <img src='https://happy-booking.eclo.io/datas/2.png' className='w-100 rounded-4'></img>
                         <div className='fw-bold fs-6 mt-3'>Limited Kẩoke</div>
                         <div className='fs-13 mt-1'>363 Đ. Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1, TP.HCM</div>

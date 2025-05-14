@@ -12,6 +12,12 @@
     contain: none !important;
 }
 
+.dark-mode .custom-tabbar {
+    --background: #1b1b1b;
+    --color: white;
+}
+
+
 .custom-tabbar ion-tab-button.tab-selected {
     height: 70px !important;
     transform: translateY(-15px);
@@ -23,6 +29,15 @@
 .ion-tab-button-custom ion-icon {
     font-size: 20px;
     color: #333;
+    transition:
+        color 0.5s ease,
+        background-color 0.5s ease,
+        font-size 0.5s ease,
+        transform 0.5s ease;
+}
+.dark-mode .ion-tab-button-custom ion-icon {
+    font-size: 20px;
+    color: white;
     transition:
         color 0.5s ease,
         background-color 0.5s ease,

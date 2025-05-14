@@ -27,8 +27,8 @@ const Invoices: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -104,15 +104,15 @@ const Invoices: React.FC = () => {
                         <div className="tab-pane active" id="nav-date">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='3' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <div id='open-modal-search-date' className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
+                                    <div id='open-modal-search-date' className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -134,46 +134,46 @@ const Invoices: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='3' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
-                                <div className='fs-13 text-muted'>Tổng doanh số</div>
+                                <div className='fs-13 '>Tổng doanh số</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm' onClick={() => setIsModalOpenDetail(true)}>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm' onClick={() => setIsModalOpenDetail(true)}>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                         </div>
                         <div className="tab-pane " id="nav-week">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='2' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='8'>
-                                    <div className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
+                                    <div className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -195,46 +195,46 @@ const Invoices: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='2' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
-                                <div className='fs-13 text-muted'>Tổng doanh số</div>
+                                <div className='fs-13 '>Tổng doanh số</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                         </div>
                         <div className="tab-pane " id="nav-month">
                             <IonRow className='d-flex align-items-center'>
                                 <IonCol size='3' >
-                                    <button className='bg-white rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-1 shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronBackOutline} ></IonIcon>
                                     </button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <div className="d-flex align-items-center p-2 bg-white rounded-pill  w-100 fs-13" id="open-modal-search-month" style={{ height: '45px' }}>
+                                    <div className="d-flex align-items-center p-2 bg-input-search rounded-pill  w-100 fs-13" id="open-modal-search-month" style={{ height: '45px' }}>
                                         <input
                                             type="text"
-                                            className="form-control border-0 shadow-none fs-13 fw-bold"
+                                            className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
                                             placeholder="Tìm kiếm"
                                             style={{
                                                 flex: 1,
@@ -256,32 +256,32 @@ const Invoices: React.FC = () => {
                                     </div>
                                 </IonCol>
                                 <IonCol size='3' className='text-end'>
-                                    <button className='bg-white rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
+                                    <button className='bg-input-search rounded-circle p-2  shadow-sm' style={{ width: "30px", height: "30px" }}>
                                         <IonIcon icon={chevronForwardOutline}></IonIcon>
                                     </button>
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
-                                <div className='fs-13 text-muted'>Tổng doanh số</div>
+                                <div className='fs-13 '>Tổng doanh số</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                             <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
-                                    <div className='text-dark fw-bold'>
+                                    <div className=' fw-bold'>
                                         #002 - Mr Lee
                                     </div>
-                                    <div className='text-muted fw-bold'>35.000.000 đ</div>
+                                    <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
-                                <div className='fs-13 text-muted'>18:00 29/04/2025 - 23:30 29/04/2025</div>
+                                <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
                             </IonCard>
                         </div>
                     </form>

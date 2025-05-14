@@ -24,8 +24,8 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-white' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-white ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button className='rounded-circle p-2 bg-switch-box color-icon ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -38,17 +38,17 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                                     <IonRefresherContent></IonRefresherContent>
                                 </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 mt-3'>
                         <IonAccordionGroup>
-                            <IonAccordion value='1'>
-                                <IonItem className='fs-13 rounded-3' slot="header" color="light">
+                            <IonAccordion value='1' className='rounded-4'>
+                                <IonItem className='fs-13 rounded-4' slot="header">
                                     <IonLabel>
                                         <div ><span className='fw-bold text-pink'>Login </span>- IP:104.28.122.127</div>
-                                        <div className='mt-2 text-muted'>Ngày: 14:00 05/05/2025</div>
+                                        <div className='mt-2 '>Ngày: 14:00 05/05/2025</div>
                                     </IonLabel>
 
                                 </IonItem>
-                                <div className="ion-padding bg-light rounded-bottom-3" slot="content">
+                                <div className="ion-padding  rounded-bottom-3" slot="content">
                                     <IonRow className='d-flex justify-content-between align-items-center'>
                                         <div className='fw-bold'>Patch : </div> accounts
                                     </IonRow>
@@ -67,7 +67,7 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                     </IonCard>
 
                     <IonRow className='fs-13 fw-bold mt-3'>Tài khoản</IonRow>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 text-dark mt-3'>
+                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 mt-3'>
                         <IonRow className='d-flex align-items-center'>
                             <IonIcon icon={personOutline} className='me-2'></IonIcon> Thông tin
                         </IonRow>

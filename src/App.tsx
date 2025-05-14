@@ -55,14 +55,18 @@ import './App.css';
 import { useLocation } from 'react-router-dom';
 import ForgetPassword from './pages/ForgetPassword';
 import GlobalRipple from './components/GlobalRipple';
+import Chat from './pages/Chat';
+import ChatDetail from './pages/ChatDetail';
 
 setupIonicReact();
 
 const TabsWithRoutes: React.FC = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/login" || location.pathname === "/ForgetPassword";
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/ForgetPassword" || location.pathname === "/chat-detail";
 
-
+  const currentPath = location.pathname;
+  console.log(currentPath);
+  
   return (
     <IonSplitPane contentId="main-content">
       <RightSideMenu />
@@ -85,28 +89,35 @@ const TabsWithRoutes: React.FC = () => {
           <Route path="/assistant" component={Assistant} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/ForgetPassword" component={ForgetPassword} exact />
+          <Route path="/chat" component={Chat} exact />
+          <Route path="/chat-detail" component={ChatDetail} exact />
           <Redirect exact from="/" to="/home" />
         </IonRouterOutlet>
 
         {!isLoginPage && (
           <IonTabBar slot="bottom" className="custom-tabbar">
-            <IonTabButton tab="tab1" href="/user-profile"  className="ion-tab-button-custom">
+            <IonTabButton tab="tab1" href="/booking-table" className={` ${currentPath === '/booking-table' ? 'tab-selected' : 'ion-tab-button-custom'}`}>
               <IonIcon icon={calendarOutline} />
               <IonLabel>Đặt bàn</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab2" href="/event" className="ion-tab-button-custom">
+            <IonTabButton tab="tab2" href="/chat" className={` ${currentPath === '/chat' ? 'tab-selected' : 'ion-tab-button-custom'}`}>
               <IonIcon icon={chatbubbleOutline} />
               <IonLabel>Chat</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab3" href="/home" className="ion-tab-button-custom">
+            <IonTabButton
+              tab="tab3"
+              href="/home"
+              className={` ${currentPath === '/home' ? 'tab-selected' : 'ion-tab-button-custom'}`}
+            >
               <IonIcon icon={homeOutline} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab4" href="/history" className="ion-tab-button-custom">
+
+            <IonTabButton tab="tab4" href="/history" className={` ${currentPath === '/history' ? 'tab-selected' : 'ion-tab-button-custom'}`}>
               <IonIcon icon={calendarNumberOutline} />
               <IonLabel>Lịch sử</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab5" href="/invoices" className="ion-tab-button-custom">
+            <IonTabButton tab="tab5" href="/invoices" className={` ${currentPath === '/invoices' ? 'tab-selected' : 'ion-tab-button-custom'}`}>
               <IonIcon icon={cashOutline} />
               <IonLabel>Hóa đơn</IonLabel>
             </IonTabButton>

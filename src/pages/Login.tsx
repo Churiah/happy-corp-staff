@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const Login: React.FC = () => {
     const history = useHistory();
     function login() {
-        history.push("/Home");
+        history.push("/home");
     }
     return (
         <IonPage>

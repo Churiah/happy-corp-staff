@@ -11,7 +11,7 @@ ion-app,
 ion-page,
 ion-content,
 ion-toolbar {
-    --color: black;
+    /* --color: black; */
     height: 100%;
     --background: linear-gradient(254deg,
             rgba(0, 254, 218, 0.05) 0%,
@@ -20,6 +20,15 @@ ion-toolbar {
             rgba(50, 206, 227, 0.05) 50%,
             rgba(252, 127, 34, 0.05) 75%,
             rgba(15, 251, 244, 0.10) 100%) !important;
+}
+
+ion-card {
+    --background: var(--ion-card-background);
+    --color: var(--ion-card-color);
+}
+
+ion-alert {
+    --background: var(--ion-alert-background);
 }
 
 /* Trong global.scss hoặc component-specific SCSS */
@@ -90,11 +99,42 @@ ion-modal .ion-backdrop {
 
 .nav-pills .nav-link,
 .nav-pills .show>.nav-link {
-    color: rgb(54, 54, 54) !important;
+    /* --color: var(--ion-card-color); */
+
     border-radius: 25px;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.bg-switch-box {
+    background-color: white;
+}
+
+.dark-mode .bg-switch-box {
+    background-color: rgba(24, 24, 24, 0.75);
+}
+
+.bg-input-search {
+    background-color: white;
+    color: black;
+}
+
+.dark-mode .bg-input-search {
+    background-color: rgba(24, 24, 24, 0.75);
+    color: white;
+}
+
+.color-icon {
+    color: black;
+}
+
+.dark-mode .color-icon {
+   color: white;
+}
+
+.nav-link {
+    color: gray;
 }
 
 .footer-ios ion-toolbar:first-of-type {
@@ -140,16 +180,6 @@ ion-segment-button.segment-button-checked::part(native) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
 .hide-scrollbar {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -162,8 +192,8 @@ ion-segment-button.segment-button-checked::part(native) {
 
 /* styles.css */
 .card-container {
-    /* background: #1c1c1c; */
-    background: white;
+    /* background: white; */
+    background: var(--ion-background-color);
     border-radius: 20px;
     padding: 20px;
     text-align: center;
@@ -176,7 +206,7 @@ ion-segment-button.segment-button-checked::part(native) {
 
 /* Các slide bị đè */
 .swiper-slide:not(.swiper-slide-active) .card-container {
-    background-color: rgba(216, 214, 214, 0.623);
+    background-color: rgba(102, 102, 102, 0.623);
     color: white;
 }
 
@@ -202,8 +232,8 @@ ion-refresher-content {
     background: transparent !important;
     --background: transparent !important;
 }
+
 ion-content::part(scroll) {
     margin-top: -10px;
     background: var(--background) !important;
-  }
-
+}

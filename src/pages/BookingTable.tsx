@@ -1,4 +1,4 @@
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRadio, IonRadioGroup, IonRow, IonSearchbar, IonSegment, IonSegmentButton, IonSelect, IonSelectOption, IonTitle, IonToolbar, useIonAlert, useIonModal } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRadio, IonRadioGroup, IonRow, IonSearchbar, IonSegment, IonSegmentButton, IonSelect, IonSelectOption, IonTitle, IonToolbar, useIonAlert, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, chevronForwardOutline, closeOutline, key, locateOutline, locationSharp, notificationsOutline, remove, searchOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -33,9 +33,8 @@ const BookingTable: React.FC = () => {
         });
     }
 
-    const [present, dismiss] = useIonModal(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
            onDismiss: () => dismiss(),
-           cssClass: 'brand-modal',
        });
        return (
            <IonPage>

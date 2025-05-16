@@ -1,4 +1,4 @@
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, chevronForwardOutline, closeOutline, cloudDoneOutline, key, locateOutline, locationSharp, notificationsOutline, remove, searchOutline, shareSocialOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -19,7 +19,7 @@ const RoomDiagram: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonModal(BranchModal, {
+   const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });

@@ -70,7 +70,6 @@ const TabsWithRoutes: React.FC = () => {
   return (
     <IonSplitPane contentId="main-content">
       <RightSideMenu />
-
       <IonTabs>
         <IonRouterOutlet id="main-content">
           <Route path="/home" component={Home} exact />

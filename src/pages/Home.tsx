@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToggle, IonToolbar, useIonModal } from '@ionic/react';
 import './page.css';
 import { accessibilityOutline, appsOutline, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, calendarClearOutline, carOutline, closeOutline, fastFoodOutline, gridOutline, notificationsOutline, optionsOutline, peopleOutline, qrCodeOutline, searchOutline, ticketOutline, womanOutline } from 'ionicons/icons';
 // import Calendar from 'react-calendar';
@@ -9,6 +9,8 @@ import { Autoplay, EffectCards } from 'swiper/modules';
 import moment from 'moment';
 import { toggleDarkMode } from '../theme/theme';
 import { menuController, RefresherEventDetail } from '@ionic/core';
+
+import BranchModal from '../components/ModalBrand';
 const Home: React.FC = () => {
     const week = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
     const [calendarDays, setCalendarDays] = useState<moment.Moment[]>([]);
@@ -42,9 +44,7 @@ const Home: React.FC = () => {
         }
     ];
     const modal = useRef<HTMLIonModalElement>(null);
-    function dismiss() {
-        modal.current?.dismiss();
-    }
+
     const [isModalOpenSearchMonth, setIsModalOpenSearchMonth] = useState(false);
     const [isModalOpenSee, setIsModalOpenSee] = useState(false);
 
@@ -91,6 +91,11 @@ const Home: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
+
+    const [present, dismiss] = useIonModal(BranchModal, {
+        onDismiss: () => dismiss(),
+        cssClass: 'brand-modal',
+    });
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -98,8 +103,8 @@ const Home: React.FC = () => {
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
                         <div className='d-flex align-items-center'>
-                            <button className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <button className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                            <button onClick={() => present()} className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                            <button onClick={() => { handleClick("/user-notification") }} className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
                             <IonMenuToggle menu="end" autoHide={false}>
                                 <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
                             </IonMenuToggle>
@@ -108,11 +113,11 @@ const Home: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <IonRefresher  slot="fixed" onIonRefresh={handleRefresh}>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
-                  
+
                     <IonRow className='fs-13 '>
                         Xin chào
                     </IonRow>

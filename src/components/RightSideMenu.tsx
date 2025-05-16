@@ -33,9 +33,9 @@ const RightSideMenu: React.FC = () => {
 
         if (mode !== null) {
             if (mode === "true") {
-                setTheme('light');
-            } else if (mode === "false") {
                 setTheme('dark');
+            } else if (mode === "false") {
+                setTheme('light');
             } else {
                 setTheme('system');
             }

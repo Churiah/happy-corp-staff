@@ -240,22 +240,20 @@ ion-content::part(scroll) {
     background: var(--background) !important;
 }
 
-.bg-input-chat{
+.bg-input-chat {
     background-color: rgba(255, 255, 255, 0.5);
     color: black;
 }
-.dark-mode .bg-input-chat{
+
+.dark-mode .bg-input-chat {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
 }
 
-.brand-modal .modal-wrapper {
-    width: 80%;
-    max-width: 400px; /* tuỳ bạn */
-    height: auto;
-    top: 50%;
+ion-popover::part(content) {
+    width: 300px;
+    max-width: 90vw;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transform: translateY(-50%);
-    margin: 0 auto;
-    border-radius: 16px;
-  }
-  
+}

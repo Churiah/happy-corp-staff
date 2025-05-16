@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToggle, IonToolbar, useIonModal } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToggle, IonToolbar, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { accessibilityOutline, appsOutline, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, calendarClearOutline, carOutline, closeOutline, fastFoodOutline, gridOutline, notificationsOutline, optionsOutline, peopleOutline, qrCodeOutline, searchOutline, ticketOutline, womanOutline } from 'ionicons/icons';
 // import Calendar from 'react-calendar';
@@ -92,9 +92,8 @@ const Home: React.FC = () => {
         }, 2000);
     }
 
-    const [present, dismiss] = useIonModal(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
     return (
         <IonPage>

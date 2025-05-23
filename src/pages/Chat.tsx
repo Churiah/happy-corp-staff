@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, closeOutline, key, locateOutline, locationSharp, notificationsOutline, remove, searchOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -20,12 +20,11 @@ const Chat: React.FC = () => {
         }, 2000);
     }
 
-    function detail(){
+    function detail() {
         history.push("/chat-detail");
     }
-    const [present, dismiss] = useIonModal(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
     return (
         <IonPage>
@@ -53,7 +52,7 @@ const Chat: React.FC = () => {
                     <IonRow className='d-flex align-items-center '>
                         <IonCol size='5' className=' fw-bold ' style={{ fontSize: "17px" }}>Tin nhắn</IonCol>
                         <IonCol size='7' className=" d-flex align-items-center p-2 bg-switch-box rounded-pill shadow-sm" style={{ height: '45px' }}>
-                           
+
                             <input
                                 type="text"
                                 className="form-control border-0 shadow-none bg-input-search"
@@ -63,11 +62,11 @@ const Chat: React.FC = () => {
                                     borderRadius: '50px',
                                 }}
                             />
-                             <IonIcon icon={searchOutline} className="ms-3 me-2 " style={{ fontSize: '20px' }} />
+                            <IonIcon icon={searchOutline} className="ms-3 me-2 " style={{ fontSize: '20px' }} />
                         </IonCol>
                     </IonRow>
                     <IonGrid>
-                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={()=>{detail()}}>
+                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
                             <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                             <div className='col-10 ms-2'>
                                 <div className='d-flex align-items-center justify-content-between mb-1'>
@@ -84,7 +83,7 @@ const Chat: React.FC = () => {
                             </div>
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={()=>{detail()}}>
+                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
                             <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                             <div className='col-10 ms-2'>
                                 <div className='d-flex align-items-center justify-content-between mb-1'>
@@ -101,7 +100,7 @@ const Chat: React.FC = () => {
                             </div>
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={()=>{detail()}}>
+                        <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
                             <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                             <div className='col-10 ms-2'>
                                 <div className='d-flex align-items-center justify-content-between mb-1'>

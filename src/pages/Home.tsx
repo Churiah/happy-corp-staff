@@ -23,7 +23,7 @@ const Home: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");       // Kết thúc ở Chủ nhật cuối cùng
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());
@@ -78,7 +78,7 @@ const Home: React.FC = () => {
         setCalendarDays(days);
     }
     const history = useHistory();
-    const handleClick = (e: any) => {
+    const handleClick = (e: string) => {
         setIsModalOpenSee(false);
         history.push(e);
         console.log(e);

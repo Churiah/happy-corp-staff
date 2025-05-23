@@ -1,4 +1,4 @@
-import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar, RefresherEventDetail, useIonModal } from '@ionic/react';
+import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { businessOutline, calendarClearOutline, calendarNumberOutline, calendarOutline, chevronBackOutline, chevronForwardOutline, closeOutline, cloudDoneOutline, notificationsOutline, optionsOutline, shareSocialOutline } from 'ionicons/icons';
 
@@ -53,7 +53,7 @@ const History: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");       // Kết thúc ở Chủ nhật cuối cùng
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());
@@ -95,7 +95,7 @@ const History: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());
@@ -111,9 +111,8 @@ const History: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonModal(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
     return (
         <IonPage>

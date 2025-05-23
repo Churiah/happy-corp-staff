@@ -1,4 +1,4 @@
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, key, keyOutline, listOutline, locateOutline, locationSharp, notificationsOutline, personOutline, remove, searchOutline, settingsOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -13,15 +13,14 @@ import { Link } from 'react-router-dom';
 const UserLogs: React.FC = () => {
     const history = useHistory();
 
-function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
             // Any calls to load data go here
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonModal(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
     return (
         <IonPage>
@@ -42,9 +41,9 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen className='page-background'>
-                <IonRefresher  slot="fixed" onIonRefresh={handleRefresh}>
-                                    <IonRefresherContent></IonRefresherContent>
-                                </IonRefresher>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 mt-3'>
                         <IonAccordionGroup>

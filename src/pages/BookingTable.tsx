@@ -33,8 +33,9 @@ const BookingTable: React.FC = () => {
         });
     }
 
-    const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonModal(BranchModal, {
         onDismiss: () => dismiss(),
+        cssClass: 'brand-modal',
     });
     return (
         <IonPage>

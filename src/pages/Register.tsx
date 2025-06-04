@@ -11,25 +11,20 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-const Login: React.FC = () => {
+const Register: React.FC = () => {
     const { t, i18n } = useTranslation();
     const history = useHistory();
-    function login() {
-        history.push("/home");
-    }
     const [presentAlert] = useIonAlert();
     const [present, dismiss] = useIonLoading();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    function dangnhap() {
+    const [phone, setphone] = useState("");
+    function next() {
         const data = {
-            "email": email,
-            "password": password
+            "phone": phone
         }
         const api = axios.create({
             baseURL: "https://booking.happycorp.com.vn/api",
         });
-        api.post("/login", data, {
+        api.post("/register", data, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -45,13 +40,9 @@ const Login: React.FC = () => {
 
             } else if (res.data.status === "success") {
                 console.log(res.data.data);
-                localStorage.setItem("happy-corp-staff-token", res.data.data.token)
-                localStorage.setItem("happy-corp-staff-active", res.data.data.active)
-                localStorage.setItem("happy-corp-staff-lang", res.data.data.lang)
-                localStorage.setItem("happy-corp-staff-avatar", res.data.data.avatar)
-                localStorage.setItem("happy-corp-staff-email", res.data.data.email)
-                localStorage.setItem("happy-corp-staff-name", res.data.data.name)
-                history.push("/home");
+                localStorage.clear();
+                localStorage.setItem("happy-corp-staff-phone-register", phone)
+                history.push("/confirm-register");
             }
         })
             .catch((error) => {
@@ -69,34 +60,25 @@ const Login: React.FC = () => {
         <IonPage>
             <IonContent fullscreen className='page-background'>
                 <IonGrid className='p-3'>
-                    <IonRow className='d-flex justify-content-center ' style={{ marginTop: "130px" }}>
+                    <IonRow className='d-flex justify-content-center ' style={{ marginTop: "170px" }}>
                         <img src='../image/happy-corp-logo.png' className='w-50'></img>
                     </IonRow>
                     <IonCard className='shadow-sm p-4 py-5 rounded-5 m-3 mt-4'>
-                        <IonRow className='d-flex justify-content-center fs-5 fw-bold'>{t("dang-nhap")}</IonRow>
-                        <IonRow className=' fs-13 fw-bold mt-4'>{t("email")}</IonRow>
+                        <IonRow className='d-flex justify-content-center fs-5 fw-bold'>Đăng ký</IonRow>
+                        <IonRow className=' fs-13 fw-bold mt-4'>Số điện thoại</IonRow>
                         <IonRow className='mt-2'>
-                            <input type='text' onChange={(e)=>{setEmail(e.target.value)}} value={email} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder={t("email")}></input>
-                        </IonRow>
-                        <IonRow className=' fs-13 fw-bold mt-3'>{t("mat-khau")}</IonRow>
-                        <IonRow className='mt-2'>
-                            <input type='password' onChange={(e)=>{setPassword(e.target.value)}} value={password} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder={t("mat-khau")}></input>
-                        </IonRow>
-                        <IonRow className='d-flex justify-content-between align-items-center mt-3'>
-                            <div className='d-flex align-items-center fs-13'>
-                                <IonCheckbox className='me-1 rounded-3'></IonCheckbox> {t("nho-tai-khoan")}
-                            </div>
-                            <Link to="/ForgetPassword" className="text-decoration-none fs-13 fw-bold">{t("quen-mat-khau")}?</Link>
+                            <input type='text' onChange={(e) => { setphone(e.target.value) }} value={phone} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder="Số điện thoại"></input>
                         </IonRow>
                         <IonRow className='mt-4'>
-                            <button onClick={() => { dangnhap() }} className='bg-pink rounded-pill p-3 w-100 fs-13 text-white'>{t("dang-nhap")}</button>
+                            <button onClick={() => { next() }} className='bg-pink rounded-pill p-3 w-100 fs-13 text-white'>Tiếp</button>
                         </IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center mt-3'>
-                            <div className='d-flex align-items-center fs-13'>
-                               Bạn chưa có tài khoản
+                            <div className='fs-13'>
+                                {t("ban-da-co-tai-khoan")}?
                             </div>
-                            <Link to="/register" className="text-decoration-none fs-13 fw-bold">Đăng ký</Link>
+                            <Link to="/login" className="text-decoration-none fs-13 fw-bold">{t("dang-nhap")}</Link>
                         </IonRow>
+                        
                     </IonCard>
                 </IonGrid>
 
@@ -108,4 +90,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default Register;

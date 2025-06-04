@@ -10,6 +10,7 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import BranchModal from '../components/ModalBrand';
+import { useTranslation } from 'react-i18next';
 const Assistant: React.FC = () => {
     const history = useHistory();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
@@ -82,6 +83,7 @@ const Assistant: React.FC = () => {
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });
+    const { t, i18n } = useTranslation();
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -109,7 +111,7 @@ const Assistant: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Trợ lý</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("tro-li")}</div>
                     </IonRow>
                     <Swiper
                         effect={'cards'}
@@ -127,7 +129,7 @@ const Assistant: React.FC = () => {
                                     <IonRow className='d-flex justify-content-center'>
                                         <button className="p-3 fs-13 px-5 rounded-pill bg-pink text-white mt-4 shadow-sm" onClick={() => {
 
-                                        }}>BOOK ME NOW</button>
+                                        }}>{t("book-me-now")}</button>
                                     </IonRow>
                                 </div>
                             </SwiperSlide>

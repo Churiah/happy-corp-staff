@@ -10,16 +10,17 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const UserLogs: React.FC = () => {
     const history = useHistory();
-
-function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
+    const { t, i18n } = useTranslation();
+    function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
             // Any calls to load data go here
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });
@@ -42,9 +43,9 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen className='page-background'>
-                <IonRefresher  slot="fixed" onIonRefresh={handleRefresh}>
-                                    <IonRefresherContent></IonRefresherContent>
-                                </IonRefresher>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13 mt-3'>
                         <IonAccordionGroup>
@@ -85,7 +86,7 @@ function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={listOutline} className='me-2'></IonIcon> Ngật ký
+                            <IonIcon icon={listOutline} className='me-2'></IonIcon> Nhật ký
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>

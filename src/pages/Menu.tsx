@@ -10,7 +10,9 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const Menu: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const history = useHistory();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
     function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
@@ -19,7 +21,7 @@ const Menu: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });
@@ -50,128 +52,91 @@ const Menu: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Thực đơn</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("thuc-don")}</div>
                     </IonRow>
-
-                    <IonAccordionGroup multiple >
-                        <IonAccordion value='1' className='rounded-4 bg-transparent mt-3'>
-                            <IonItem lines="none" className='fs-13 rounded-4 bg-white' slot="header">
-                                <IonLabel className='fw-bold py-2'>
+                    <div className="card-header mt-3 px-3">
+                        <ul
+                            className="nav nav-pills row d-flex justify-content-around"
+                            id="pills-tab"
+                            role="tablist"
+                        >
+                            <li className="nav-item col-4 px-0" role="presentation">
+                                <button
+                                    className="nav-link active fs-13 d-flex align-items-center justify-content-center"
+                                    id="pills-1-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#nav-1"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="pills-1"
+                                    aria-selected="true"
+                                >
+                                    Dịch vụ
+                                </button>
+                            </li>
+                            <li className="nav-item col-4 px-0" role="presentation">
+                                <button
+                                    className="nav-link fs-13  d-flex align-items-center justify-content-center"
+                                    id="pills-2-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#nav-2"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="pills-2"
+                                    aria-selected="false"
+                                >
+                                    Món ăn
+                                </button>
+                            </li>
+                            <li className="nav-item col-4 px-0" role="presentation">
+                                <button
+                                    className="nav-link fs-13  d-flex align-items-center justify-content-center"
+                                    id="pills-3-tab"
+                                    data-bs-toggle="pill"
+                                    data-bs-target="#nav-3"
+                                    type="button"
+                                    role="tab"
+                                    aria-controls="pills-3"
+                                    aria-selected="false"
+                                >
                                     Combo
-                                </IonLabel>
-                            </IonItem>
-                            <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
-                                <IonRow className='d-flex align-items-center'>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                </IonRow>
-                            </div>
-                        </IonAccordion>
-                        <IonAccordion value='2' className='rounded-4 bg-transparent mt-4'>
-                            <IonItem lines="none" className='fs-13 rounded-4 bg-white' slot="header">
-                                <IonLabel className='fw-bold py-2'>
-                                    Món chính
-                                </IonLabel>
-                            </IonItem>
-                            <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
-                                <IonRow className='d-flex align-items-center'>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                </IonRow>
-                            </div>
-                        </IonAccordion>
-                        <IonAccordion value='3' className='rounded-4 bg-transparent mt-4'>
-                            <IonItem lines="none" className='fs-13 rounded-4 bg-white' slot="header">
-                                <IonLabel className='fw-bold py-2'>
-                                    Đồ uống
-                                </IonLabel>
-                            </IonItem>
-                            <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
-                                <IonRow className='d-flex align-items-center'>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='6'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
-                                            <div className='mt-1 fw-bold ms-1'>Combo 1</div>
-                                            <div className='ms-1'>4.500.000đ</div>
-                                        </IonCard>
-                                    </IonCol>
-                                </IonRow>
-                            </div>
-                        </IonAccordion>
-                    </IonAccordionGroup>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <form className=" tab-content overflowY pt-2 px-2">
+                        <div className="tab-pane active" id="nav-1">
+                            <IonAccordionGroup multiple >
+                                <IonAccordion value='1' className='rounded-4 bg-transparent mt-3'>
+                                    <IonItem lines="none" className='fs-13 rounded-4 bg-white' slot="header">
+                                        <IonLabel className='fw-bold py-2'>
+                                            Private Room
+                                        </IonLabel>
+                                    </IonItem>
+                                    <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
+                                        <IonRow className='d-flex align-items-center'>
+                                            <IonCol size='6'>
+                                                <IonCard className='shadow-sm rounded-4 m-0 p-2 ' onClick={() => { setIsModalOpenDetail(true) }}>
+                                                    <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
+                                                    <div className='mt-1 fw-bold ms-1'>Combo 1</div>
+                                                    <div className='ms-1'>4.500.000đ</div>
+                                                </IonCard>
+                                            </IonCol>
+                                            <IonCol size='6'>
+                                                <IonCard className='shadow-sm rounded-4 m-0 p-2 '>
+                                                    <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4 p-1'></img>
+                                                    <div className='mt-1 fw-bold ms-1'>Combo 1</div>
+                                                    <div className='ms-1'>4.500.000đ</div>
+                                                </IonCard>
+                                            </IonCol>
+                                        </IonRow>
+                                    </div>
+                                </IonAccordion>                            
+                            </IonAccordionGroup>
+                        </div>
+                    </form>
+
+
                 </IonGrid>
 
             </IonContent>

@@ -10,8 +10,10 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import BranchModal from '../components/ModalBrand';
+import { useTranslation } from 'react-i18next';
 const Event: React.FC = () => {
     const history = useHistory();
+    const { t, i18n } = useTranslation();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
     function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
@@ -49,7 +51,7 @@ const Event: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Sự kiện</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("su-kien")}</div>
                     </IonRow>
                     <IonCard className='m-0 p-3 rounded-4 mt-3 shadow-sm ' onClick={() => { setIsModalOpenDetail(true) }}>
                         <div className='fw-bold fs-15'>Drinking Session</div>

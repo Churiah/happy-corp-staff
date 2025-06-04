@@ -10,7 +10,9 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const UserProfile: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const history = useHistory();
 
     const [isModalOpenChangePass, setIsModalOpenChangePass] = useState(false);
@@ -49,7 +51,7 @@ const UserProfile: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });
@@ -83,40 +85,40 @@ const UserProfile: React.FC = () => {
                     <div className='text-center fs-15 mt-2'>demo@eclo.vn</div>
 
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
-                        <IonRow><span className='fw-bold'>Mã của bạn :</span>#002</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Họ và tên :</span>Demo</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Email :</span>demo@eclo.vn</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Tài khoản :</span>demo</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Điện thoại :</span>0133456789</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Ngày sinh :</span>05/05/3000</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Giới tính :</span>Nữ</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>Ngày đăng ký :</span>#002</IonRow>
+                        <IonRow><span className='fw-bold'>{t("ma-cua-ban")} :</span>#002</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ho-va-ten")} :</span>Demo</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("email")} :</span>demo@eclo.vn</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("tai-khoan")} :</span>demo</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("dien-thoai")} :</span>0133456789</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-sinh")} :</span>05/05/3000</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("gioi-tinh")} :</span>Nữ</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-dang-ky")} :</span>#002</IonRow>
                     </IonCard>
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center' onClick={() => setIsModalOpenChangePass(true)}>
-                            <IonIcon icon={keyOutline} className='me-2'></IonIcon> Đổi mật khẩu
+                            <IonIcon icon={keyOutline} className='me-2'></IonIcon> {t("doi-mat-khau")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center' onClick={() => setIsModalOpenUpdate(true)}>
-                            <IonIcon icon={personOutline} className='me-2'></IonIcon> Cập nhật thông tin
+                            <IonIcon icon={personOutline} className='me-2'></IonIcon> {t("cap-nhat-thong-tin")}
                         </IonRow>
                     </IonCard>
-                    <IonRow className='fs-13 fw-bold mt-3'>Tài khoản</IonRow>
+                    <IonRow className='fs-13 fw-bold mt-3'>{t("tai-khoan")}</IonRow>
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={personOutline} className='me-2'></IonIcon> Thông tin
+                            <IonIcon icon={personOutline} className='me-2'></IonIcon> {t("thong-tin")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={notificationsOutline} className='me-2'></IonIcon> Thông báo
+                            <IonIcon icon={notificationsOutline} className='me-2'></IonIcon> {t("thong-bao")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={listOutline} className='me-2'></IonIcon> Ngật ký
+                            <IonIcon icon={listOutline} className='me-2'></IonIcon> {t("nhat-ky")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={settingsOutline} className='me-2'></IonIcon> Cài đặt
+                            <IonIcon icon={settingsOutline} className='me-2'></IonIcon> {t("cai-dat")}
                         </IonRow>
                     </IonCard>
                 </IonGrid>
@@ -126,7 +128,7 @@ const UserProfile: React.FC = () => {
             <IonModal isOpen={isModalOpenChangePass} onDidDismiss={() => { setIsModalOpenChangePass(false) }} >
                 <div className=' p-0 pb-3' >
                     <IonRow className='d-flex justify-content-between  fixed-header p-1'>
-                        <div className='fs-13 fw-bold  p-3 pb-0'>Đổi mật khẩu</div>
+                        <div className='fs-13 fw-bold  p-3 pb-0'>{t("doi-mat-khau")}</div>
                         <button className='bg-pink rounded-circle  text-white' style={{ width: "35px", height: "35px" }} ><IonIcon onClick={() => setIsModalOpenChangePass(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></button>
                     </IonRow>
 
@@ -134,20 +136,20 @@ const UserProfile: React.FC = () => {
                         overflowY: "auto",
                         maxHeight: "85vh"
                     }}>
-                        <IonRow className=' fs-13 mt-3'>Mật khẩu cũ <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("mat-khau-cu")} <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
                             <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu cũ'></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Mật khẩu mới  <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("mat-khau-moi")}  <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
                             <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu mới '></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Xác nhận mật khẩu <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("xac-nhan-mat-khau")} <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
                             <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Xác nhận mật khẩu'></input>
                         </IonRow>
                         <IonRow className='mt-4'>
-                            <button className='rounded-pill w-100 p-3 bg-pink text-white'>Thay đổi</button>
+                            <button className='rounded-pill w-100 p-3 bg-pink text-white'>{t("thay-doi")}</button>
                         </IonRow>
 
                     </IonGrid>
@@ -158,7 +160,7 @@ const UserProfile: React.FC = () => {
             <IonModal isOpen={isModalOpenUpdate} onDidDismiss={() => { setIsModalOpenUpdate(false) }} >
                 <div className=' p-0 pb-3' >
                     <IonRow className='d-flex justify-content-between  fixed-header p-1'>
-                        <div className='fs-13 fw-bold  p-3 pb-0'>Thay đổi thông tin</div>
+                        <div className='fs-13 fw-bold  p-3 pb-0'>{t("thay-doi-thong-tin")}</div>
                         <button className='bg-pink rounded-circle  text-white' style={{ width: "35px", height: "35px" }} ><IonIcon onClick={() => setIsModalOpenUpdate(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></button>
                     </IonRow>
 
@@ -166,26 +168,26 @@ const UserProfile: React.FC = () => {
                         overflowY: "auto",
                         maxHeight: "85vh"
                     }}>
-                        <IonRow className=' fs-13 mt-3'>Họ và tên <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("ho-va-ten")} <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
                             <input type='text' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='Demo'></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Điện thoại  <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("dien-thoai")}  <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
                             <input type='tel' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='0123456789'></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Ngày sinh</IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("ngay-sinh")}</IonRow>
                         <IonRow className='mt-2'>
                             <input type='date' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='2025/01/01'></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Giới tính</IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("gioi-tinh")}</IonRow>
                         <IonRow className='mt-2'>
                             <select className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value={2} >
-                                <option value={1}>Nam</option>
-                                <option value={2}>Nữ</option>
+                                <option value={1}>{t("nam")}</option>
+                                <option value={2}>{t("nu")}</option>
                             </select>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>Hình ảnh</IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("hinh-anh")}</IonRow>
 
 
                         <IonCard className='m-0 mt-3 p-3 rounded-4 border-border-secondary shadow-sm border border-1'>

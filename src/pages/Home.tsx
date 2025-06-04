@@ -11,7 +11,10 @@ import { toggleDarkMode } from '../theme/theme';
 import { menuController, RefresherEventDetail } from '@ionic/core';
 
 import BranchModal from '../components/ModalBrand';
+
+import { useTranslation } from 'react-i18next';
 const Home: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const week = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
     const [calendarDays, setCalendarDays] = useState<moment.Moment[]>([]);
 
@@ -118,7 +121,7 @@ const Home: React.FC = () => {
                 <IonGrid className='p-3 pt-4'>
 
                     <IonRow className='fs-13 '>
-                        Xin chào
+                        {t("xin-chao")}
                     </IonRow>
                     <IonRow className='fs-5 fw-bold'>
                         Nguyễn Thị Thanh Thúy
@@ -128,7 +131,7 @@ const Home: React.FC = () => {
                         <input
                             type="text"
                             className="form-control border-0 shadow-none bg-switch-box"
-                            placeholder="Tìm kiếm"
+                            placeholder={t("tim-kiem")}
                             style={{
                                 flex: 1,
                                 borderRadius: '50px',
@@ -148,7 +151,7 @@ const Home: React.FC = () => {
                     </div>
                     <IonRow className='mt-3'>
                         <div className='bg-pink rounded-circle' style={{ width: "20px", height: "20px" }}></div>
-                        <div className='fs-13 fw-bold ms-2'>Sự kiện</div>
+                        <div className='fs-13 fw-bold ms-2'>{t("su-kien")}</div>
                     </IonRow>
                     <IonRow className='mt-3'>
                         <Swiper
@@ -171,11 +174,11 @@ const Home: React.FC = () => {
                     </IonRow>
                     <IonRow className='mt-2'>
                         <IonCol size='3' className='d-flex justify-content-center'>
-                            <div onClick={() => { handleClick("/booking-table") }}>
+                            <div onClick={() => { handleClick("/room-diagram") }}>
                                 <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                     <IonIcon icon={calendarClearOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                                 </div>
-                                <div className='fs-13 mt-1 text-center'>Đặt bàn</div>
+                                <div className='fs-13 mt-1 text-center'>{t("dat-ban")}</div>
                             </div>
                         </IonCol>
                         <IonCol size='3' className='d-flex justify-content-center'>
@@ -183,7 +186,7 @@ const Home: React.FC = () => {
                                 <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                     <IonIcon icon={fastFoodOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                                 </div>
-                                <div className='fs-13 mt-1 text-center'>Thực đơn</div>
+                                <div className='fs-13 mt-1 text-center'>{t("thuc-don")}</div>
                             </div>
                         </IonCol>
                         <IonCol size='3' className='d-flex justify-content-center'>
@@ -191,7 +194,7 @@ const Home: React.FC = () => {
                                 <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                     <IonIcon icon={ticketOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                                 </div>
-                                <div className='fs-13 mt-1 text-center'>Sự kiện</div>
+                                <div className='fs-13 mt-1 text-center'>{t("su-kien")}</div>
                             </div>
                         </IonCol>
                         <IonCol size='3' className='d-flex justify-content-center'>
@@ -199,26 +202,26 @@ const Home: React.FC = () => {
                                 <button onClick={() => setIsModalOpenSee(true)} className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                     <IonIcon icon={gridOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                                 </button>
-                                <div className='fs-13 mt-1 text-center'>Thêm</div>
+                                <div className='fs-13 mt-1 text-center'>{t("them")}</div>
                             </div>
                         </IonCol>
                     </IonRow>
                     <IonRow className='mt-2'>
                         <IonCol size='6' className='d-flex align-items-center'>
                             <div className='bg-pink rounded-circle' style={{ width: "20px", height: "20px" }}></div>
-                            <div className='fs-13 fw-bold ms-2'>Lịch đặt bàn</div>
+                            <div className='fs-13 fw-bold ms-2'>{t("lich-dat-ban")}</div>
                         </IonCol>
                         <IonCol size='6'>
                             <div onClick={() => { setIsModalOpenSearchMonth(true) }} className="d-flex align-items-center p-2 bg-switch-box rounded-pill shadow-sm w-100 fs-13" style={{ height: '50px' }}>
                                 <input
                                     type="text"
                                     className="form-control border-0 shadow-none fs-13 fw-bold bg-switch-box"
-                                    placeholder="Tìm kiếm"
+                                    placeholder={t("tim-kiem")}
                                     style={{
                                         flex: 1,
                                         borderRadius: '50px',
                                     }}
-                                    value={`Tháng ${searchMonth + 1} / ${searchYear}`}
+                                    value={`${t("thang")} ${searchMonth + 1} / ${searchYear}`}
                                 />
                                 <div
                                     className=" d-flex justify-content-center align-items-center me-0"
@@ -288,29 +291,58 @@ const Home: React.FC = () => {
                                 );
                             })}
                         </div>
-
+                        <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
+                            <div className="d-flex align-items-center gap-1">
+                                <span className="badge bg-pink mb-1" style={{ fontSize: "10px" }}> </span>
+                                <span className='fs-13'> Tổng booking</span>
+                            </div>
+                            <div className="d-flex align-items-center gap-1">
+                                <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
+                                <span className='fs-13'> Đã thanh toán</span>
+                            </div>
+                            <div className="d-flex align-items-center gap-1">
+                                <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
+                                <span className='fs-13'> Còn chờ</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <IonRow className='fw-bold fs-13 mt-4'>Danh sách booking</IonRow>
-                    <div className="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
+                    <IonRow className='fw-bold fs-13 mt-4'>{t("danh-sach-booking")} hôm nay 26/05/2025</IonRow>
+                    <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
                         <div className="d-flex align-items-center gap-1">
                             <span className="badge bg-primary mb-1" style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Đã nhận</span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Nhật khách</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Đã thanh toán</span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Thanh toán</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Chờ</span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Đợi khách</span>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center gap-3 mt-2 flex-wrap">
+                        <div className="d-flex align-items-center gap-1">
+                            <span className="badge bg-info mb-1" style={{ fontSize: "10px" }}> </span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Chờ duyệt</span>
+                        </div>
+                        <div className="d-flex align-items-center gap-1">
+                            <span className={`badge bg-danger mb-1`} style={{ fontSize: "10px" }}> </span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Không duyệt</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-secondary mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Hủy</span>
+                            <span className='fs-13'><span className='fw-bold'>1</span> Đã hủy</span>
                         </div>
                     </div>
-                    <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
+                    <IonRow className='p-3'>
+                        <img src='../image/not-booking.svg' className='w-100'></img>
+                        <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                            <div>Không tìm thấy lịch sử</div>
+                        </div>
+                    </IonRow>
+                    {/* <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
                         <div className="row d-flex align-items-center ">
                             <div className="badge bg-primary col-2 ms-2" style={{ width: "30px", height: "30px" }}> </div>
                             <div className='ms-2 fs-13 col-10 px-0'>
@@ -345,23 +377,20 @@ const Home: React.FC = () => {
                                 <div style={{ fontSize: "12px" }}>18:23 29/04/2025</div>
                             </div>
                         </div>
-                    </IonCard>
-
-
+                    </IonCard> */}
                 </IonGrid>
-
             </IonContent>
 
             {/* Modal menu */}
             <IonModal isOpen={isModalOpenSee} onDidDismiss={() => { setIsModalOpenSee(false) }} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className='text-end me-3 mt-3' ><IonIcon onClick={() => setIsModalOpenSee(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></div>
                 <IonRow className='mt-2 pb-4'>
-                    <IonCol size='3' className='d-flex justify-content-center'>
+                    {/* <IonCol size='3' className='d-flex justify-content-center'>
                         <div onClick={() => { handleClick("/booking-table") }}>
                             <div className='rounded-circle bg-switch-box dark:bg-secondary shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={calendarClearOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Đặt bàn</div>
+                            <div className='fs-13 mt-1 text-center'>{t("dat-ban")}</div>
                         </div>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
@@ -369,7 +398,7 @@ const Home: React.FC = () => {
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={fastFoodOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Thực đơn</div>
+                            <div className='fs-13 mt-1 text-center'>{t("thuc-don")}</div>
                         </Link>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
@@ -377,15 +406,15 @@ const Home: React.FC = () => {
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={ticketOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center '>Sự kiện</div>
+                            <div className='fs-13 mt-1 text-center '>{t("su-kien")}</div>
                         </Link>
-                    </IonCol>
+                    </IonCol> */}
                     <IonCol size='3' className='d-flex justify-content-center'>
                         <Link to='/assistant' onClick={() => setIsModalOpenSee(false)}>
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={womanOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Trợ lý</div>
+                            <div className='fs-13 mt-1 text-center'>{t("tro-li")}</div>
                         </Link>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
@@ -393,7 +422,7 @@ const Home: React.FC = () => {
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={carOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Đặt xe</div>
+                            <div className='fs-13 mt-1 text-center'>{t("dat-xe")}</div>
                         </div>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
@@ -401,7 +430,7 @@ const Home: React.FC = () => {
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={businessOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Nhà hàng</div>
+                            <div className='fs-13 mt-1 text-center'>{t("nha-hang")}</div>
                         </Link>
                     </IonCol>
                     <IonCol size='3' className='d-flex justify-content-center'>
@@ -409,7 +438,7 @@ const Home: React.FC = () => {
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={peopleOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Khách hàng</div>
+                            <div className='fs-13 mt-1 text-center'>{t("khach-hang")}</div>
                         </Link>
                     </IonCol>
                     {/* <IonCol size='3' className='d-flex justify-content-center'>
@@ -420,14 +449,14 @@ const Home: React.FC = () => {
                             <div className='fs-13 mt-1 text-center'>Thanh toán</div>
                         </div>
                     </IonCol> */}
-                    <IonCol size='3' className='d-flex justify-content-center'>
+                    {/* <IonCol size='3' className='d-flex justify-content-center'>
                         <Link to='/room-diagram' onClick={() => setIsModalOpenSee(false)}>
                             <div className='rounded-circle bg-switch-box shadow-sm d-flex justify-content-center align-items-center' style={{ width: "60px", height: "60px" }}>
                                 <IonIcon icon={appsOutline} style={{ fontSize: "20px" }} className='text-pink'></IonIcon>
                             </div>
-                            <div className='fs-13 mt-1 text-center'>Sơ đồ phòng</div>
+                            <div className='fs-13 mt-1 text-center'>{t("so-do-phong")}</div>
                         </Link>
-                    </IonCol>
+                    </IonCol> */}
                 </IonRow>
 
             </IonModal>
@@ -435,7 +464,7 @@ const Home: React.FC = () => {
             {/* Modal search date */}
             <IonModal isOpen={isModalOpenSearchMonth} onDidDismiss={() => setIsModalOpenSearchMonth(false)} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className='d-flex justify-content-between mx-3 mt-3' >
-                    <div className='fs-15 '>Tìm lịch</div>
+                    <div className='fs-15 '>{t("tim-phong")}</div>
                     <IonIcon onClick={() => setIsModalOpenSearchMonth(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon>
                 </div>
                 <IonGrid className='p-3 m-0'>
@@ -460,7 +489,7 @@ const Home: React.FC = () => {
                         </IonCol>
                     </IonRow>
                     <IonRow className='my-3'>
-                        <button className='bg-pink text-white fs-13 fw-bold p-3 rounded-pill w-100' onClick={() => { handleSearchMonth(); setIsModalOpenSearchMonth(false) }} >Xem</button>
+                        <button className='bg-pink text-white fs-13 fw-bold p-3 rounded-pill w-100' onClick={() => { handleSearchMonth(); setIsModalOpenSearchMonth(false) }} >{t("xem")}</button>
                     </IonRow>
                 </IonGrid>
 

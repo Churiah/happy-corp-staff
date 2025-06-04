@@ -19,6 +19,7 @@ import { menuController } from '@ionic/core';
 import { useEffect, useState } from 'react';
 import { toggleDarkMode } from '../theme/theme';
 import { useTheme } from '../context/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const RightSideMenu: React.FC = () => {
     const history = useHistory();
@@ -40,7 +41,7 @@ const RightSideMenu: React.FC = () => {
                 setTheme('system');
             }
         }
-        
+
     }, []);
 
     const handleToggleCustom = (type: string) => {
@@ -56,6 +57,12 @@ const RightSideMenu: React.FC = () => {
         }
     };
 
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (lng : string) => {
+        i18n.changeLanguage(lng);
+        localStorage.setItem("language_happy_corp_staff", lng); // Lưu ngôn ngữ vào localStorage
+    };
     return (
         <IonMenu side="end" contentId="main-content" menuId="end" type="overlay" style={{ backdropFilter: "blur(5px)" }}>
             <IonHeader >
@@ -122,13 +129,13 @@ const RightSideMenu: React.FC = () => {
                     </IonRow>
 
                     <IonRow className='fs-11 mt-4'>
-                        Ngôn ngữ
+                        Ngôn ngữ {t("home")}
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4'>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => changeLanguage("en")}>
                         <IonIcon icon={personOutline} className='me-2'></IonIcon>
                         Tiếng Anh
                     </IonRow>
-                    <IonRow className='d-flex align-items-center mt-4'>
+                    <IonRow className='d-flex align-items-center mt-4' onClick={() => changeLanguage("vi")}>
                         <IonIcon icon={notificationsOutline} className='me-2'></IonIcon>
                         Tiếng Việt
                     </IonRow>

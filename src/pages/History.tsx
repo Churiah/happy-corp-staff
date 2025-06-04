@@ -9,8 +9,10 @@ import { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const History: React.FC = () => {
     const history = useHistory();
+    const { t, i18n } = useTranslation();
     const modal = useRef<HTMLIonModalElement>(null);
     const [isModalOpenSearchMonth, setIsModalOpenSearchMonth] = useState(false);
     const [isModalOpenSearchDate, setIsModalOpenSearchDate] = useState(false);
@@ -111,7 +113,7 @@ const History: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });
     return (
@@ -141,7 +143,7 @@ const History: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Lịch sử</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("lich-su")}</div>
                     </IonRow>
                     <div className="card-header mt-3 px-3">
                         <ul
@@ -161,7 +163,7 @@ const History: React.FC = () => {
                                     aria-selected="true"
                                 >
                                     <IonIcon icon={calendarClearOutline} className='me-2' style={{ fontSize: "17px" }}></IonIcon>
-                                    Ngày
+                                    {t("ngay")}
                                 </button>
                             </li>
                             <li className="nav-item col-4 px-0" role="presentation">
@@ -176,7 +178,7 @@ const History: React.FC = () => {
                                     aria-selected="false"
                                 >
                                     <IonIcon icon={calendarOutline} className='me-2' style={{ fontSize: "17px" }}></IonIcon>
-                                    Tuần
+                                    {t("tuan")}
                                 </button>
                             </li>
                             <li className="nav-item col-4 px-0" role="presentation">
@@ -191,7 +193,7 @@ const History: React.FC = () => {
                                     aria-selected="false"
                                 >
                                     <IonIcon icon={calendarNumberOutline} className='me-2' style={{ fontSize: "17px" }}></IonIcon>
-                                    Tháng
+                                    {t("thang")}
                                 </button>
                             </li>
                         </ul>
@@ -209,7 +211,7 @@ const History: React.FC = () => {
                                         <input
                                             type="text"
                                             className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
-                                            placeholder="Tìm kiếm"
+                                            placeholder={t("tim-kiem")}
                                             style={{
                                                 flex: 1,
                                                 borderRadius: '50px',
@@ -239,38 +241,48 @@ const History: React.FC = () => {
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Tổng booking</div>
+                                        <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã thanh toán</div>
+                                        <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã hủy</div>
+                                        <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
                             </IonRow>
-                            <div className="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
                                 <div className="d-flex align-items-center gap-1">
                                     <span className="badge bg-primary mb-1" style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã nhận</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Nhật khách</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã thanh toán</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Thanh toán</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đợi khách</span>
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-2 flex-wrap">
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className="badge bg-info mb-1" style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ duyệt</span>
+                                </div>
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className={`badge bg-danger mb-1`} style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Không duyệt</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-secondary mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Hủy</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã hủy</span>
                                 </div>
                             </div>
 
@@ -311,7 +323,7 @@ const History: React.FC = () => {
                                         <input
                                             type="text"
                                             className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
-                                            placeholder="Tìm kiếm"
+                                            placeholder={t("tim-kiem")}
                                             style={{
                                                 flex: 1,
                                                 borderRadius: '50px',
@@ -341,19 +353,19 @@ const History: React.FC = () => {
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Tổng booking</div>
+                                        <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã thanh toán</div>
+                                        <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã hủy</div>
+                                        <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
                             </IonRow>
@@ -401,22 +413,32 @@ const History: React.FC = () => {
                                 </div>
                             </div>
 
-                            <div className="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
                                 <div className="d-flex align-items-center gap-1">
                                     <span className="badge bg-primary mb-1" style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã nhận</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Nhật khách</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã thanh toán</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Thanh toán</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đợi khách</span>
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-2 flex-wrap">
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className="badge bg-info mb-1" style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ duyệt</span>
+                                </div>
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className={`badge bg-danger mb-1`} style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Không duyệt</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-secondary mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Hủy</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã hủy</span>
                                 </div>
                             </div>
 
@@ -457,7 +479,7 @@ const History: React.FC = () => {
                                         <input
                                             type="text"
                                             className="form-control bg-input-search border-0 shadow-none fs-13 fw-bold"
-                                            placeholder="Tìm kiếm"
+                                            placeholder={t("tim-kiem")}
                                             style={{
                                                 flex: 1,
                                                 borderRadius: '50px',
@@ -487,19 +509,19 @@ const History: React.FC = () => {
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Tổng booking</div>
+                                        <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã thanh toán</div>
+                                        <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
                                         <div className='fs-1 fw-bold'>5</div>
-                                        <div className='fs-13'>Đã hủy</div>
+                                        <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
                             </IonRow>
@@ -558,22 +580,32 @@ const History: React.FC = () => {
                                 </div>
 
                             </div>
-                            <div className="d-flex justify-content-center align-items-center gap-4 mt-3 flex-wrap">
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
                                 <div className="d-flex align-items-center gap-1">
                                     <span className="badge bg-primary mb-1" style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã nhận</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Nhật khách</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã thanh toán</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Thanh toán</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đợi khách</span>
+                                </div>
+                            </div>
+                            <div className="d-flex justify-content-between align-items-center gap-3 mt-2 flex-wrap">
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className="badge bg-info mb-1" style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Chờ duyệt</span>
+                                </div>
+                                <div className="d-flex align-items-center gap-1">
+                                    <span className={`badge bg-danger mb-1`} style={{ fontSize: "10px" }}> </span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Không duyệt</span>
                                 </div>
                                 <div className="d-flex align-items-center gap-1">
                                     <span className={`badge bg-secondary mb-1`} style={{ fontSize: "10px" }}> </span>
-                                    <span className='fs-13'><span className='fw-bold'>1</span> Hủy</span>
+                                    <span className='fs-13'><span className='fw-bold'>1</span> Đã hủy</span>
                                 </div>
                             </div>
 
@@ -609,7 +641,7 @@ const History: React.FC = () => {
             {/* Modal search month */}
             <IonModal isOpen={isModalOpenSearchMonth} onDidDismiss={() => setIsModalOpenSearchMonth(false)} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className='d-flex justify-content-between mx-3 mt-3' >
-                    <div className='fs-15 '>Tìm lịch</div>
+                    <div className='fs-15 '>{t("tim-lich")}</div>
                     <IonIcon onClick={() => dismiss()} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon>
                 </div>
                 <IonGrid className='p-3 m-0'>
@@ -641,7 +673,7 @@ const History: React.FC = () => {
             {/* Modal search date */}
             <IonModal isOpen={isModalOpenSearchDate} onDidDismiss={() => { setIsModalOpenSearchDate(false) }} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className='d-flex justify-content-between mx-3 mt-3' >
-                    <div className='fs-15 '>Tìm lịch</div>
+                    <div className='fs-15 '>{t("tim-lich")}</div>
                     <IonIcon onClick={() => dismiss()} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon>
                 </div>
                 <IonGrid className='p-3 m-0'>
@@ -697,7 +729,7 @@ const History: React.FC = () => {
                         </IonCol>
                     </IonRow>
                     <IonRow className='my-3'>
-                        <button className='bg-pink text-white fs-13 fw-bold p-3 rounded-pill w-100' onClick={() => setIsModalOpenSearchDate(false)}>Xem</button>
+                        <button className='bg-pink text-white fs-13 fw-bold p-3 rounded-pill w-100' onClick={() => setIsModalOpenSearchDate(false)}>{t("xem")}</button>
                     </IonRow>
                 </IonGrid>
             </IonModal>

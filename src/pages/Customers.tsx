@@ -10,6 +10,7 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { t } from 'i18next';
 const Customers: React.FC = () => {
     const history = useHistory();
     const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
@@ -49,7 +50,7 @@ const Customers: React.FC = () => {
                         <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
                             <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
                         </button>
-                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>Khách hàng</div>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("khach-hang")}</div>
                     </IonRow>
                     <IonCard className='m-0 p-3 rounded-pill mt-3 shadow-sm' onClick={() => { setIsModalOpenDetail(true) }}>
                         <IonRow className='d-flex align-items-center justify-content-between'>

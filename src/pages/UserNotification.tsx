@@ -10,16 +10,17 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const UserNotification: React.FC = () => {
     const history = useHistory();
-
+    const { t, i18n } = useTranslation();
     function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
         setTimeout(() => {
             // Any calls to load data go here
             event.detail.complete();
         }, 2000);
     }
-   const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });
@@ -46,45 +47,42 @@ const UserNotification: React.FC = () => {
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
+                    <IonRow className='d-flex align-items-center '>
+                        <button className='text-center bg-none rounded-circle me-2' style={{ width: "40px", height: "40px" }} onClick={() => history.goBack()}>
+                            <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
+                        </button>
+                        <div className=' fw-bold ' style={{ fontSize: "17px" }}>{t("thong-bao")}</div>
+                    </IonRow>
 
-
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
-                        <input type='text' className=' rounded-3 fs-13 border border-0 w-100' style={{ backgroundColor: "#edf2ff", padding: "10px" }} placeholder='Nhập để tìm kiếm...'></input>
-                        <IonList>
-                            <IonItemSliding>
-                                <IonItem button={true}>
-
-                                    <IonLabel>Rick Astley</IonLabel>
-                                </IonItem>
-                                <IonItemOptions slot="end">
-                                    <IonItemOption color="danger" expandable={true}>
-                                        <IonIcon slot="icon-only" icon={trashOutline}></IonIcon>
-                                    </IonItemOption>
-                                </IonItemOptions>
-                            </IonItemSliding>
-                        </IonList>
-
-
-                    </IonCard>
-
-                    <IonRow className='fs-13 fw-bold mt-3'>Tài khoản</IonRow>
-                    <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
-                        <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={personOutline} className='me-2'></IonIcon> Thông tin
+                    <IonList className='bg-none p-2'>
+                        <IonRow className='fs-13'>
+                            <div>
+                                <div className='fw-bold d-flex align-items-center'>
+                                    <div className='bg-danger rounded-circle me-2' style={{ width: "10px", height: "10px" }}></div>
+                                    Tin nhắn
+                                </div>
+                                <div className='text-muted my-1'>2025-05-02 15:00</div>
+                                <div>Xin chào bạn</div>
+                            </div>
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={notificationsOutline} className='me-2'></IonIcon> Thông báo
+                        <IonRow className='fs-13'>
+                            <div>
+                                <div className='fw-bold d-flex align-items-center'>
+                                    <div className='bg-danger rounded-circle me-2' style={{ width: "10px", height: "10px" }}></div>
+                                    Tin nhắn
+                                </div>
+                                <div className='text-muted my-1'>2025-05-02 15:00</div>
+                                <div>Xin chào bạn</div>
+                            </div>
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={listOutline} className='me-2'></IonIcon> Ngật ký
-                        </IonRow>
-                        <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center'>
-                            <IonIcon icon={settingsOutline} className='me-2'></IonIcon> Cài đặt
-                        </IonRow>
-                    </IonCard>
+                    </IonList>
+
+
+                    <IonRow className='d-flex justify-content-center fixed-bottom my-2'>
+                        <button className='rounded-pill p-2 fs-13 text-white bg-pink'>{t("danh-dau-da-doc")}</button>
+                    </IonRow>
                 </IonGrid>
 
             </IonContent>

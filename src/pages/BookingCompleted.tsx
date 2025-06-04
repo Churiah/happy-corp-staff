@@ -10,6 +10,7 @@ import { EffectCards } from 'swiper/modules';
 import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 const BookingCompleted: React.FC = () => {
     const history = useHistory();
 
@@ -22,6 +23,7 @@ const BookingCompleted: React.FC = () => {
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });
+     const { t, i18n } = useTranslation();
     return (
         <IonPage>
             <IonHeader style={{ backdropFilter: "blur(50px)" }}>
@@ -49,7 +51,7 @@ const BookingCompleted: React.FC = () => {
 
                         <IonIcon icon={checkmarkCircleOutline} color='success' style={{ fontSize: "25px" }} />
 
-                        <div className=' fw-bold ms-2' style={{ fontSize: "17px" }}>Đặt bàn thành công</div>
+                        <div className=' fw-bold ms-2' style={{ fontSize: "17px" }}>{t("dat-ban-thanh-cong")}</div>
                     </IonRow>
                     <IonRow className='d-flex justify-content-center mt-4'>
                         <div className='bg-white w-50 p-3 rounded-4 shadow-sm'>
@@ -57,57 +59,57 @@ const BookingCompleted: React.FC = () => {
                         </div>
                     </IonRow>
                     <div className='d-flex justify-content-center mt-2 fs-13 fw-bold'>#0000111</div>
-                    <IonRow className='fw-bold mt-4'>Thông tin khách hàng</IonRow>
+                    <IonRow className='fw-bold mt-4'>{t("thong-tin-khach-hang")}</IonRow>
                     <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 mt-3'>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Khách hàng <div className='fw-bold'>Mr Nick</div>
+                            {t("khach-hang")} <div className='fw-bold'>Mr Nick</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Điện thoại <div className='fw-bold'>0123456789</div>
+                            {t("dien-thoai")} <div className='fw-bold'>0123456789</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Ghi chú <div className='fw-bold'>Chọn ems xinh</div>
+                            {t("ghi-chu")} <div className='fw-bold'>Chọn ems xinh</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Xác nhận <div className='fw-bold'>Đã xác nhận qua Zalo</div>
+                            {t("xac-nhan")} <div className='fw-bold'>Đã xác nhận qua Zalo</div>
                         </IonRow>
                     </IonCard>
 
-                    <IonRow className='fw-bold mt-3'>Thông tin đặt bàn</IonRow>
+                    <IonRow className='fw-bold mt-3'>{t("thong-tin-dat-ban")}</IonRow>
                     <IonCard className='rounded-4 m-0 border border-1 shadow-none fs-13 mt-3'>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Nhà hàng <div className='fw-bold'>90s House</div>
+                            {t("nha-hang")} <div className='fw-bold'>90s House</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Mã booking <div className='fw-bold'>#002</div>
+                            {t("ma-booking")} <div className='fw-bold'>#002</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Ngày <div className='fw-bold'>15:00 05/05/2025</div>
+                            {t("ngay")} <div className='fw-bold'>15:00 05/05/2025</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Số người <div className='fw-bold'>10</div>
+                            {t("so-nguoi")} <div className='fw-bold'>10</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Khu vực / Phòng <div className='fw-bold'>Happy</div>
+                            {t("phu-vuc")} / {t("phong")} <div className='fw-bold'>Happy</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Trạng thái <div className='fw-bold text-success'>Đã chuẩn bị phòng</div>
+                            {t("trang-thai")} <div className='fw-bold text-success'>Đã chuẩn bị phòng</div>
                         </IonRow>
                         <IonRow className='border-50 '></IonRow>
                         <IonRow className='d-flex align-items-center justify-content-between p-3'>
-                            Ghi chú <div className='fw-bold'>Yêu cầu có DJ</div>
+                            {t("ghi-chu")} <div className='fw-bold'>Yêu cầu có DJ</div>
                         </IonRow>
                     </IonCard>
                     <IonRow className='fw-bold mt-3'>
-                        Chi tiết Dịch vụ / Món ăn
+                        {t("chi-tiet-dich-vu")} / {t("mon-an")}
                     </IonRow>
                     <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13 '>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
@@ -128,21 +130,21 @@ const BookingCompleted: React.FC = () => {
 
                     </IonCard>
                     <IonRow className='fs-13 fw-bold mt-3'>
-                        Thanh toán
+                        {t("thanh-toan")}
                     </IonRow>
                     <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13 '>
                         <IonRow className='d-flex justify-content-between align-items-center text-success fw-bold p-3'>
-                            <div>Tổng cộng :</div>
+                            <div>{t("tong-cong")} :</div>
                             <div>55.000.000đ</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center text-warning fw-bold  p-3'>
-                            <div>Đã cọc :</div>
+                            <div>{t("da-coc")} :</div>
                             <div>5.000.000đ</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center text-danger fw-bold  p-3'>
-                            <div>Giảm giá :</div>
+                            <div>{t("giam-gia")} :</div>
                             <div>5.000.000đ</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
@@ -152,31 +154,31 @@ const BookingCompleted: React.FC = () => {
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center text-pink fw-bold  p-3'>
-                            <div>Thanh toán :</div>
+                            <div>{t("thanh-toan")} :</div>
                             <div>50.000.000đ</div>
                         </IonRow>
                     </IonCard>
                     <IonRow className='fs-13 fw-bold mt-3'>
-                        Thông tin thanh toán
+                        {t("thong-tin-thanh-toan")}
                     </IonRow>
                     <IonCard className='rounded-4 border border-1 shadow-none m-0 mt-2 fs-13 '>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className=''>Phương thức thanh toán</div>
-                            <div className='fw-bold'>Tiền mặt</div>
+                            <div className=''>{t("phuong-thuc-thanh-toan")}</div>
+                            <div className='fw-bold'>{t("tien-mat")}</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className=''>Ngày thanh toán</div>
+                            <div className=''>{t("ngay-thanh-toan")}</div>
                             <div className='fw-bold'>17:00 05/05/2025</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className=''>Lễ tân</div>
+                            <div className=''>{t("le-tan")}</div>
                             <div className='fw-bold'>Ms Xinh</div>
                         </IonRow>
                         <IonRow className='border-50'></IonRow>
                         <IonRow className='d-flex justify-content-between align-items-center p-3'>
-                            <div className=''>Người đặt</div>
+                            <div className=''>{t("nguoi-dat")}</div>
                             <div className='fw-bold'>Mr Lee</div>
                         </IonRow>
                     </IonCard>

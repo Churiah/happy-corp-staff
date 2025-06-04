@@ -58,11 +58,16 @@ import GlobalRipple from './components/GlobalRipple';
 import Chat from './pages/Chat';
 import ChatDetail from './pages/ChatDetail';
 
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
+import Register from './pages/Register';
+import ConfirmRegister from './pages/ConfirmRegister';
+
 setupIonicReact();
 
 const TabsWithRoutes: React.FC = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/login" || location.pathname === "/ForgetPassword" || location.pathname === "/chat-detail";
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/ForgetPassword" || location.pathname === "/chat-detail" || location.pathname === "/register" || location.pathname === "/confirm-register" || location.pathname === "/confirm-password";
 
   const currentPath = location.pathname;
   console.log(currentPath);
@@ -90,6 +95,9 @@ const TabsWithRoutes: React.FC = () => {
           <Route path="/ForgetPassword" component={ForgetPassword} exact />
           <Route path="/chat" component={Chat} exact />
           <Route path="/chat-detail" component={ChatDetail} exact />
+
+          <Route path="/register" component={Register} exact />
+          <Route path="/confirm-register" component={ConfirmRegister} exact />
           <Redirect exact from="/" to="/home" />
         </IonRouterOutlet>
 
@@ -129,12 +137,14 @@ const TabsWithRoutes: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <GlobalRipple />
-      <IonReactRouter>
-        <TabsWithRoutes />
-      </IonReactRouter>
-    </IonApp>
+    <I18nextProvider i18n={i18n}>
+      <IonApp>
+        <GlobalRipple />
+        <IonReactRouter>
+          <TabsWithRoutes />
+        </IonReactRouter>
+      </IonApp>
+    </I18nextProvider>
   );
 };
 

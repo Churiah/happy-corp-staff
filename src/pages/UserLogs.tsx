@@ -21,8 +21,8 @@ const UserLogs: React.FC = () => {
         }, 2000);
     }
     const [present, dismiss] = useIonPopover(BranchModal, {
+    const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
     return (
         <IonPage>
@@ -43,6 +43,9 @@ const UserLogs: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen className='page-background'>
+                <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>

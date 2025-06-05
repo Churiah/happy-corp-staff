@@ -24,7 +24,6 @@ const RoomDiagram: React.FC = () => {
     }
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
-        cssClass: 'brand-modal',
     });
 
     //search

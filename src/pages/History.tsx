@@ -55,7 +55,7 @@ const History: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");       // Kết thúc ở Chủ nhật cuối cùng
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());
@@ -97,7 +97,7 @@ const History: React.FC = () => {
         const endOfCalendar = endOfMonth.clone().endOf("isoWeek");
 
         const days: moment.Moment[] = [];
-        let current = startOfCalendar.clone();
+        const current = startOfCalendar.clone();
 
         while (current.isSameOrBefore(endOfCalendar, "day")) {
             days.push(current.clone());

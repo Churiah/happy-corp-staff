@@ -23,6 +23,7 @@ const Chat: React.FC = () => {
     }
 
     function detail() {
+    function detail() {
         history.push("/chat-detail");
     }
     const [present, dismiss] = useIonPopover(BranchModal, {

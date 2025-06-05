@@ -33,6 +33,7 @@ const BookingTable: React.FC = () => {
                 },
             ],
 
+
         });
     }
 
@@ -347,7 +348,7 @@ const BookingTable: React.FC = () => {
                                     <button className='rounded-pill bg-secondary text-white fs-13 p-3 w-100' onClick={() => setStep(4)}>{t("quay-lai")}</button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <button className='rounded-pill bg-pink text-white fs-13 p-3 w-100' onClick={() => { success() }}>{t("hoan-tat")}</button>
+                                    <button className='rounded-pill bg-pink text-white fs-13 p-3 w-100' onClick={()=>{success()}}>Hoàn tất</button>
                                 </IonCol>
                             </IonRow>
                         </>

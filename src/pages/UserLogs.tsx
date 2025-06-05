@@ -20,7 +20,7 @@ const UserLogs: React.FC = () => {
             event.detail.complete();
         }, 2000);
     }
-    const [present, dismiss] = useIonPopover(BranchModal, {
+
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });

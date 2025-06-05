@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonAlert, useIonLoading, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, closeOutline, cloudUploadOutline, key, keyOutline, listOutline, locateOutline, locationSharp, notificationsOutline, personOutline, remove, searchOutline, settingsOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -11,9 +11,11 @@ import { useHistory } from 'react-router';
 import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 const UserProfile: React.FC = () => {
     const { t, i18n } = useTranslation();
     const history = useHistory();
+    const [presentAlert] = useIonAlert();
 
     const [isModalOpenChangePass, setIsModalOpenChangePass] = useState(false);
     const [isModalOpenUpdate, setIsModalOpenUpdate] = useState(false);
@@ -55,44 +57,190 @@ const UserProfile: React.FC = () => {
         onDismiss: () => dismiss(),
         cssClass: 'brand-modal',
     });
+
+    const [name, setName] = useState("");
+    const [id, setId] = useState("");
+    const [email, setEmail] = useState("");
+    const [account, setAccount] = useState("");
+    const [phone, setPhone] = useState("");
+    const [birthday, setBirthday] = useState("");
+    const [gender, setGender] = useState("");
+    const [dateRegister, SetDateRegister] = useState("");
+    useEffect(() => {
+        Profile();
+    }, [])
+
+    const Profile = () => {
+        const token = localStorage.getItem("happy-corp-staff-token");
+        const data = {
+            "token": token
+        }
+        const api = axios.create({
+            baseURL: "https://booking.happycorp.com.vn/api",
+        });
+        api.post("/profile", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => {
+            if (res.data.status === "error") {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+
+            } else if (res.data.status === "success") {
+                console.log(res.data.data);
+                setName(res.data.data.name);
+                setId(res.data.data.id);
+                setEmail(res.data.data.email);
+                setPhone(res.data.data.phone);
+                setAccount(res.data.data.account);
+                setBirthday(res.data.data.birthday);
+                setGender(res.data.data.gender);
+                SetDateRegister(res.data.data.date);
+                setAvatar(res.data.data.avatar);
+
+            }
+        })
+            .catch((error) => {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: "Unable to connect to server",
+                    buttons: ["OK"],
+                });
+
+            });
+    }
+
+    const [passwordOld, setPasswordOld] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
+    function changePassword() {
+        const token = localStorage.getItem("happy-corp-staff-token");
+        const data = {
+            "token": token,
+            "password-old": passwordOld,
+            "password": password,
+            "password-confirm": passwordConfirm
+        }
+        const api = axios.create({
+            baseURL: "https://booking.happycorp.com.vn/api",
+        });
+        api.post("/change-password", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => {
+            if (res.data.status === "error") {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+
+            } else if (res.data.status === "success") {
+                console.log(res.data.data);
+                setIsModalOpenChangePass(false)
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "SUCCESS",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+            }
+        })
+            .catch((error) => {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: "Unable to connect to server",
+                    buttons: ["OK"],
+                });
+
+            });
+    }
+
+    function changeInfo() {
+        const token = localStorage.getItem("happy-corp-staff-token");
+        const data = {
+            "token": token,
+            "name": name,
+            "images": avatar,
+            "email": email,
+            "birthday": birthday,
+            "gender": gender
+        }
+        const api = axios.create({
+            baseURL: "https://booking.happycorp.com.vn/api",
+        });
+        api.post("/change-infomation", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => {
+            if (res.data.status === "error") {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+
+            } else if (res.data.status === "success") {
+                console.log(res.data.data);
+                setIsModalOpenUpdate(false);
+                Profile();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "SUCCESS",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+            }
+        })
+            .catch((error) => {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: "Unable to connect to server",
+                    buttons: ["OK"],
+                });
+
+            });
+    }
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
-                <IonToolbar className='shadow-none border border-0'>
-                    <IonRow className='d-flex justify-content-between align-items-center p-1'>
-                        <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
-                        <div className='d-flex align-items-center'>
-                            <button onClick={() => present()} className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <Link to='/user-notification'>
-                                <button className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
-                            </Link>
-                            <IonMenuToggle menu="end" autoHide={false}>
-                                <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
-                            </IonMenuToggle>
-                        </div>
-                    </IonRow>
-                </IonToolbar>
-            </IonHeader>
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
                     <IonRow className='d-flex justify-content-center'>
-                        <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' className=' rounded-circle' style={{ width: "40%" }}></img>
+                        <img src={`https://booking.happycorp.com.vn/${avatar}`} className=' rounded-circle' style={{ width: "40%" }}></img>
                     </IonRow>
-                    <div className='fw-bold fs-4 text-center mt-3'>Demo</div>
-                    <div className='text-center fs-15 mt-2'>demo@eclo.vn</div>
+                    <div className='fw-bold fs-4 text-center mt-3'>{account}</div>
+                    <div className='text-center fs-15 mt-2'>{email}</div>
 
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
-                        <IonRow><span className='fw-bold'>{t("ma-cua-ban")} :</span>#002</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("ho-va-ten")} :</span>Demo</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("email")} :</span>demo@eclo.vn</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("tai-khoan")} :</span>demo</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("dien-thoai")} :</span>0133456789</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-sinh")} :</span>05/05/3000</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("gioi-tinh")} :</span>Nữ</IonRow>
-                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-dang-ky")} :</span>#002</IonRow>
+                        <IonRow><span className='fw-bold'>{t("ma-cua-ban")} :</span>#{id}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ho-va-ten")} :</span>{name}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("email")} :</span>{email}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("tai-khoan")} :</span>{account}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("dien-thoai")} :</span>{phone}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-sinh")} :</span>{birthday}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("gioi-tinh")} :</span>{gender == "1" && "Nữ"} {gender == "2" && "Nam"}</IonRow>
+                        <IonRow className='mt-3'><span className='fw-bold'>{t("ngay-dang-ky")} :</span>{dateRegister}</IonRow>
                     </IonCard>
                     <IonCard className='rounded-4 m-0 p-3 shadow-sm fs-13  mt-3'>
                         <IonRow className='d-flex align-items-center' onClick={() => setIsModalOpenChangePass(true)}>
@@ -131,30 +279,26 @@ const UserProfile: React.FC = () => {
                         <div className='fs-13 fw-bold  p-3 pb-0'>{t("doi-mat-khau")}</div>
                         <button className='bg-pink rounded-circle  text-white' style={{ width: "35px", height: "35px" }} ><IonIcon onClick={() => setIsModalOpenChangePass(false)} icon={closeOutline} style={{ fontSize: "25px" }}></IonIcon></button>
                     </IonRow>
-
                     <IonGrid className='p-4 overflowY h-100 fs-13' style={{
                         overflowY: "auto",
                         maxHeight: "85vh"
                     }}>
                         <IonRow className=' fs-13 mt-3'>{t("mat-khau-cu")} <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
-                            <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu cũ'></input>
+                            <input type='password' value={passwordOld} onChange={(e) => { setPasswordOld(e.target.value) }} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu cũ'></input>
                         </IonRow>
                         <IonRow className=' fs-13 mt-3'>{t("mat-khau-moi")}  <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
-                            <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu mới '></input>
+                            <input type='password' value={password} onChange={(e) => { setPassword(e.target.value) }} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Mật khẩu mới '></input>
                         </IonRow>
                         <IonRow className=' fs-13 mt-3'>{t("xac-nhan-mat-khau")} <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
-                            <input type='password' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Xác nhận mật khẩu'></input>
+                            <input type='password' value={passwordConfirm} onChange={(e) => { setPasswordConfirm(e.target.value) }} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Xác nhận mật khẩu'></input>
                         </IonRow>
                         <IonRow className='mt-4'>
-                            <button className='rounded-pill w-100 p-3 bg-pink text-white'>{t("thay-doi")}</button>
+                            <button className='rounded-pill w-100 p-3 bg-pink text-white' onClick={() => { changePassword }}>{t("thay-doi")}</button>
                         </IonRow>
-
                     </IonGrid>
-
-
                 </div>
             </IonModal>
             <IonModal isOpen={isModalOpenUpdate} onDidDismiss={() => { setIsModalOpenUpdate(false) }} >
@@ -172,9 +316,9 @@ const UserProfile: React.FC = () => {
                         <IonRow className='mt-2'>
                             <input type='text' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='Demo'></input>
                         </IonRow>
-                        <IonRow className=' fs-13 mt-3'>{t("dien-thoai")}  <span className='text-danger ms-1'>(*)</span></IonRow>
+                        <IonRow className=' fs-13 mt-3'>{t("email")}  <span className='text-danger ms-1'>(*)</span></IonRow>
                         <IonRow className='mt-2'>
-                            <input type='tel' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='0123456789'></input>
+                            <input type='email' className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' value='0123456789'></input>
                         </IonRow>
                         <IonRow className=' fs-13 mt-3'>{t("ngay-sinh")}</IonRow>
                         <IonRow className='mt-2'>
@@ -188,7 +332,6 @@ const UserProfile: React.FC = () => {
                             </select>
                         </IonRow>
                         <IonRow className=' fs-13 mt-3'>{t("hinh-anh")}</IonRow>
-
 
                         <IonCard className='m-0 mt-3 p-3 rounded-4 border-border-secondary shadow-sm border border-1'>
 

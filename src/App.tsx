@@ -1,22 +1,28 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
+  IonHeader,
   IonIcon,
   IonLabel,
+  IonMenuToggle,
   IonRouterOutlet,
+  IonRow,
   IonSplitPane,
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonToolbar,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import {
+  businessOutline,
   calendarNumberOutline,
   calendarOutline,
   cashOutline,
   chatbubbleOutline,
-  homeOutline
+  homeOutline,
+  notificationsOutline
 } from 'ionicons/icons';
 
 import Home from './pages/Home';
@@ -62,6 +68,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Register from './pages/Register';
 import ConfirmRegister from './pages/ConfirmRegister';
+import ConfirmPassword from './pages/ConfirmPassword';
 
 setupIonicReact();
 
@@ -75,6 +82,7 @@ const TabsWithRoutes: React.FC = () => {
   return (
     <IonSplitPane contentId="main-content">
       <RightSideMenu />
+
       <IonTabs>
         <IonRouterOutlet id="main-content">
           <Route path="/home" component={Home} exact />
@@ -98,9 +106,25 @@ const TabsWithRoutes: React.FC = () => {
 
           <Route path="/register" component={Register} exact />
           <Route path="/confirm-register" component={ConfirmRegister} exact />
+          <Route path="/confirm-password" component={ConfirmPassword} exact />
           <Redirect exact from="/" to="/home" />
         </IonRouterOutlet>
-
+        <IonHeader slot='top' style={{ backdropFilter: "blur(50px)" }}>
+          <IonToolbar className='shadow-none border border-0'>
+            <IonRow className='d-flex justify-content-between align-items-center p-1'>
+              <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
+              <div className='d-flex align-items-center'>
+                <button className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
+                <Link to='/user-notification'>
+                  <button className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
+                </Link>
+                <IonMenuToggle menu="end" autoHide={false}>
+                  <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
+                </IonMenuToggle>
+              </div>
+            </IonRow>
+          </IonToolbar>
+        </IonHeader>
         {!isLoginPage && (
           <IonTabBar slot="bottom" className="custom-tabbar">
             <IonTabButton tab="tab1" href="/booking-table" className={` ${currentPath === '/booking-table' ? 'tab-selected' : 'ion-tab-button-custom'}`}>

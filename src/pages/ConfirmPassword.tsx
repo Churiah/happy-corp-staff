@@ -11,7 +11,7 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
-const ConfirmRegister: React.FC = () => {
+const ConfirmPassword: React.FC = () => {
     const { t, i18n } = useTranslation();
     const history = useHistory();
     const [presentAlert] = useIonAlert();
@@ -49,6 +49,7 @@ const ConfirmRegister: React.FC = () => {
                     console.log(res.data.data);
                     localStorage.clear();
                     localStorage.setItem("happy-corp-staff-token", res.data.data.token)
+                    localStorage.setItem("happy-corp-staff-phone", res.data.data.phone)
                     localStorage.setItem("happy-corp-staff-active", res.data.data.active)
                     localStorage.setItem("happy-corp-staff-lang", res.data.data.lang)
                     localStorage.setItem("happy-corp-staff-avatar", res.data.data.avatar)
@@ -92,6 +93,7 @@ const ConfirmRegister: React.FC = () => {
                     console.log(res.data.data);
                     localStorage.clear();
                     localStorage.setItem("happy-corp-staff-token", res.data.data.token)
+                    localStorage.setItem("happy-corp-staff-phone", res.data.data.phone)
                     localStorage.setItem("happy-corp-staff-active", res.data.data.active)
                     localStorage.setItem("happy-corp-staff-lang", res.data.data.lang)
                     localStorage.setItem("happy-corp-staff-avatar", res.data.data.avatar)
@@ -147,4 +149,4 @@ const ConfirmRegister: React.FC = () => {
     );
 };
 
-export default ConfirmRegister;
+export default ConfirmPassword;

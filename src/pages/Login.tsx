@@ -46,6 +46,7 @@ const Login: React.FC = () => {
             } else if (res.data.status === "success") {
                 console.log(res.data.data);
                 localStorage.setItem("happy-corp-staff-token", res.data.data.token)
+                localStorage.setItem("happy-corp-staff-phone", res.data.data.phone)
                 localStorage.setItem("happy-corp-staff-active", res.data.data.active)
                 localStorage.setItem("happy-corp-staff-lang", res.data.data.lang)
                 localStorage.setItem("happy-corp-staff-avatar", res.data.data.avatar)

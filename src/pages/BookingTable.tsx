@@ -94,7 +94,7 @@ const BookingTable: React.FC = () => {
 
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
+            {/* <IonHeader style={{ backdropFilter: "blur(50px)" }}>
                 <IonToolbar className='shadow-none border border-0'>
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
@@ -109,7 +109,7 @@ const BookingTable: React.FC = () => {
                         </div>
                     </IonRow>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <IonContent fullscreen className='page-background'>
                 <IonGrid className='p-3'>
                     <IonRow className='d-flex align-items-center '>

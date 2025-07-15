@@ -118,7 +118,7 @@ const History: React.FC = () => {
     });
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
+            {/* <IonHeader style={{ backdropFilter: "blur(50px)" }}>
                 <IonToolbar className='shadow-none border border-0'>
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
@@ -133,7 +133,7 @@ const History: React.FC = () => {
                         </div>
                     </IonRow>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
@@ -240,19 +240,19 @@ const History: React.FC = () => {
                             <IonRow>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
@@ -286,7 +286,7 @@ const History: React.FC = () => {
                                 </div>
                             </div>
 
-                            <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
+                            {/* <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
                                 <div className="row d-flex align-items-center">
                                     <div className="badge bg-primary col-2 ms-2" style={{ width: "30px", height: "30px" }}> </div>
                                     <div className='ms-2 fs-13 col-10 px-0'>
@@ -309,7 +309,13 @@ const History: React.FC = () => {
                                         <div style={{ fontSize: "12px" }}>18:23 29/04/2025</div>
                                     </div>
                                 </div>
-                            </IonCard>
+                            </IonCard> */}
+                            <IonRow className='p-3'>
+                                <img src='../image/not-booking.svg' className='w-100'></img>
+                                <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                                    <div>Không tìm thấy lịch sử</div>
+                                </div>
+                            </IonRow>
                         </div>
                         <div className="tab-pane " id="nav-week">
                             <IonRow className='d-flex align-items-center'>
@@ -352,19 +358,19 @@ const History: React.FC = () => {
                             <IonRow>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
@@ -508,19 +514,19 @@ const History: React.FC = () => {
                             <IonRow>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-pink text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("tong-booking")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-success text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-thanh-toan")}</div>
                                     </IonCard>
                                 </IonCol>
                                 <IonCol size='4'>
                                     <IonCard className='shadow-sm rounded-4 p-2 m-0 text-secondary text-center'>
-                                        <div className='fs-1 fw-bold'>5</div>
+                                        <div className='fs-1 fw-bold'>0</div>
                                         <div className='fs-13'>{t("da-huy")}</div>
                                     </IonCard>
                                 </IonCol>
@@ -609,7 +615,7 @@ const History: React.FC = () => {
                                 </div>
                             </div>
 
-                            <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
+                            {/* <IonCard className="m-0 p-3 rounded-4 shadow-sm mt-3">
                                 <div className="row d-flex align-items-center ">
                                     <div className="badge bg-primary col-2 ms-2" style={{ width: "30px", height: "30px" }}> </div>
                                     <div className='ms-2 fs-13 col-10 px-0'>
@@ -632,7 +638,13 @@ const History: React.FC = () => {
                                         <div style={{ fontSize: "12px" }}>18:23 29/04/2025</div>
                                     </div>
                                 </div>
-                            </IonCard>
+                            </IonCard> */}
+                            <IonRow className='p-3'>
+                                <img src='../image/not-booking.svg' className='w-100'></img>
+                                <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                                    <div>Không tìm thấy lịch sử</div>
+                                </div>
+                            </IonRow>
                         </div>
                     </form>
 

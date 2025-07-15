@@ -1,4 +1,4 @@
-import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonAlert, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, chevronForwardOutline, closeOutline, cloudDoneOutline, key, locateOutline, locationSharp, notificationsOutline, optionsOutline, remove, searchOutline, shareSocialOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -12,6 +12,21 @@ import BranchModal from '../components/ModalBrand';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import axios from 'axios';
+
+type EventRoom = {
+    id: string;
+    name: string;
+    images: string;
+    active: string;
+    areas: string;
+    areas_id: string;
+    code: string;
+    invoices: string;
+    process: string;
+    date_invoices: string;
+    date_start: string;
+};
 const RoomDiagram: React.FC = () => {
     const { t, i18n } = useTranslation();
     const history = useHistory();
@@ -49,10 +64,7 @@ const RoomDiagram: React.FC = () => {
         setdate(weekday)
     }, [])
 
-
-
     function handleSearchMonth() {
-
         setSearchMonth(selectedMonth);
         setSearchYear(selectedYear)
         setSearchDate(selectedDate);
@@ -61,35 +73,73 @@ const RoomDiagram: React.FC = () => {
             month: selectedMonth,
             day: selectedDate
         });
+        console.log(selectedDate + "-" + selectedMonth + "-" + selectedYear);
 
         const weekdayNumber = selectedMoment.day();
         const weekday = listDate[weekdayNumber];
         setdate(weekday)
+        listDiagram(selectedDate, selectedMonth + 1, selectedYear);
     }
 
-     const handleClick = (e: any) => {
+    const handleClick = (e: any) => {
         history.push(e);
         console.log(e);
 
     };
+
+    const [presentAlert] = useIonAlert();
+    const [listRoom, setListRoom] = useState<EventRoom[]>([]);
+    useEffect(() => {
+        listDiagram(searchDate, searchMonth + 1, searchYear);
+    }, [])
+
+    function listDiagram(day: any, month: any, year: any) {
+        const token = localStorage.getItem("happy-corp-staff-token");
+        const brand = localStorage.getItem("happy-corp-staff-brand") || "1";
+        const data = {
+            "token": token,
+            "brand": brand,
+            "day": day,
+            "month": month,
+            "year": year,
+        }
+        console.log("data", data);
+
+        const api = axios.create({
+            baseURL: "https://booking.happycorp.com.vn/api",
+        });
+        api.post("/diagram", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => {
+            if (res.data.status === "error") {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+
+            } else if (res.data.status === "success") {
+                console.log(res.data.data);
+                setListRoom(res.data.data);
+            }
+        })
+            .catch((error) => {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: "Unable to connect to server",
+                    buttons: ["OK"],
+                });
+
+            });
+    }
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
-                <IonToolbar className='shadow-none border border-0'>
-                    <IonRow className='d-flex justify-content-between align-items-center p-1'>
-                        <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
-                        <div className='d-flex align-items-center'>
-                            <button onClick={() => present()} className='rounded-circle p-2 bg-switch-box' style={{ width: "35px", height: "35px" }}> <IonIcon icon={businessOutline} size='15px'></IonIcon></button>
-                            <Link to='/user-notification'>
-                                <button className='rounded-circle p-2 bg-switch-box ms-2' style={{ width: "35px", height: "35px" }}> <IonIcon icon={notificationsOutline} size='15px'></IonIcon></button>
-                            </Link>
-                            <IonMenuToggle menu="end" autoHide={false}>
-                                <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' alt='avatar' className='rounded-circle ms-2' style={{ width: "40px", height: "40px" }}></img>
-                            </IonMenuToggle>
-                        </div>
-                    </IonRow>
-                </IonToolbar>
-            </IonHeader>
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
@@ -144,7 +194,7 @@ const RoomDiagram: React.FC = () => {
                         <IonRow className='mt-3'>
                             <IonCol size='4'>
 
-                                <select className='p-2 rounded-4 fs-13 border border-1 w-100 bg-light' value={searchDate} onChange={(e) => setSelectedDate(parseInt(e.target.value))}>
+                                <select className='p-2 rounded-4 fs-13 border border-1 w-100 bg-light' value={selectedDate} onChange={(e) => setSelectedDate(parseInt(e.target.value))}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -216,111 +266,34 @@ const RoomDiagram: React.FC = () => {
                             <span className='fs-13'><span className='fw-bold'>1</span> {t("trong")}</span>
                         </div>
                     </div>
-                    <IonRow className='p-3'>
-                        <img src='../image/not-booking.svg' className='w-100'></img>
-                    </IonRow>
-                    <IonRow className=' fs-13 fw-bold d-flex justify-content-center'>
-                        <div>
-                            Không tìm thấy dữ liệu
-                        </div>
-                    </IonRow>
-                    <IonAccordionGroup multiple value={['1', '2']}>
-                        <IonAccordion value='1' className='rounded-4 bg-transparent mt-3' >
-                            <IonItem lines="none" className='fs-15 rounded-4 bg-white shadow-sm' slot="header">
-                                <IonLabel className='fw-bold py-2'>
-                                    Tầng 1
-                                </IonLabel>
-                            </IonItem>
-                            <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
-                                <IonRow className='d-flex align-items-center'>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { handleClick("booking-table") }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 1</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-danger bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 2</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 4</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 5</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 6</div>
-                                        </IonCard>
-                                    </IonCol>
-                                </IonRow>
-                            </div>
-                        </IonAccordion>
-                        <IonAccordion value='2' className='rounded-4 bg-transparent mt-3'>
-                            <IonItem lines="none" className='fs-15 rounded-4 bg-white shadow-sm' slot="header">
-                                <IonLabel className='fw-bold py-2'>
-                                    Tầng 2
-                                </IonLabel>
-                            </IonItem>
-                            <div className="p-2 bg-transparent fs-13" slot="content" style={{ backgroundColor: "transparent !important" }}>
-                                <IonRow className='d-flex align-items-center'>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 1</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-danger bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 2</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-white ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 3</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2  bg-warning bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 4</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 5</div>
-                                        </IonCard>
-                                    </IonCol>
-                                    <IonCol size='4'>
-                                        <IonCard className='shadow-sm rounded-4 m-0 p-2 text-white bg-primary bg-opacity-75 ' onClick={() => { setIsModalOpenDetail(true) }}>
-                                            <img src='https://happy-booking.eclo.io/datas/img/1.jpg' className='w-100 rounded-4'></img>
-                                            <div className='mt-1 fs-13 fw-bold ms-1'>Happy 6</div>
-                                        </IonCard>
-                                    </IonCol>
-                                </IonRow>
-                            </div>
-                        </IonAccordion>
-                    </IonAccordionGroup>
 
+                    <IonRow className='d-flex align-items-center'>
+                        {listRoom && listRoom.map((room, key) => {
+                            let cardClass = '';
+                            if (room.process === "1") {
+                                cardClass = 'bg-warning text-dark';
+                            } else if (room.process === "2") {
+                                cardClass = 'bg-primary text-white bg-opacity-75';
+                            } else {
+                                cardClass = 'bg-white text-dark';
+                            }
+                            return (
+                                <>
+                                    <IonCol size='4'>
+                                        <IonCard className={`shadow-sm rounded-4 m-0 p-2  ${cardClass}`} onClick={() => { handleClick("booking-table") }}>
+                                            <div className=' fs-13 fw-bold ms-1'>{room.name}</div>
+                                            {room.images ?
+                                                <img src={`https://system.happycorp.com.vn/${room.images}`} className='w-100 mt-2 rounded-4'></img>
+                                                :
+                                                <img src="../image/no-image-room.jpg" className='w-100 mt-2 mb-2 rounded-4'></img>
+                                            }
+
+                                        </IonCard>
+                                    </IonCol>
+                                </>
+                            )
+                        })}
+                    </IonRow>
 
                     <IonRow className='fw-bold fs-13 mt-4'>{t("danh-sach-booking")} hôm nay 26/05/2025</IonRow>
                     <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">

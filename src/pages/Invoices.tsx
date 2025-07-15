@@ -1,4 +1,4 @@
-import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
+import { IonCard, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonTab, IonTabButton, IonTabs, IonToolbar, RefresherEventDetail, useIonAlert, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { businessOutline, calendarClearOutline, calendarNumberOutline, calendarOutline, chevronBackOutline, chevronForwardOutline, closeOutline, cloudDoneOutline, notificationsOutline, optionsOutline, shareSocialOutline } from 'ionicons/icons';
 
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import BranchModal from '../components/ModalBrand';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
+import axios from 'axios';
 const Invoices: React.FC = () => {
     const { t, i18n } = useTranslation();
     const history = useHistory();
@@ -53,9 +54,56 @@ const Invoices: React.FC = () => {
         }
 
     }
+
+    // const [presentAlert] = useIonAlert();
+    // function invoicesDay() {
+    //     const token = localStorage.getItem("happy-corp-staff-token");
+    //     const brand = localStorage.getItem("happy-corp-staff-brand") || "1";
+    //     const data = {
+    //         "token": token,
+    //         "brand": brand,
+    //         "day": day,
+    //         "month": month,
+    //         "year": year,
+    //     }
+    //     console.log("data", data);
+
+    //     const api = axios.create({
+    //         baseURL: "https://booking.happycorp.com.vn/api",
+    //     });
+    //     api.post("/diagram", data, {
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     }).then((res) => {
+    //         if (res.data.status === "error") {
+    //             dismiss();
+    //             presentAlert({
+    //                 cssClass: 'custom-alert',
+    //                 header: "ERROR",
+    //                 message: res.data.content,
+    //                 buttons: ["OK"],
+    //             });
+
+    //         } else if (res.data.status === "success") {
+    //             console.log(res.data.data);
+    //             setListRoom(res.data.data);
+    //         }
+    //     })
+    //         .catch((error) => {
+    //             dismiss();
+    //             presentAlert({
+    //                 cssClass: 'custom-alert',
+    //                 header: "ERROR",
+    //                 message: "Unable to connect to server",
+    //                 buttons: ["OK"],
+    //             });
+
+    //         });
+    // }
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
+            {/* <IonHeader style={{ backdropFilter: "blur(50px)" }}>
                 <IonToolbar className='shadow-none border border-0'>
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
@@ -70,7 +118,7 @@ const Invoices: React.FC = () => {
                         </div>
                     </IonRow>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
@@ -178,7 +226,7 @@ const Invoices: React.FC = () => {
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
-                            <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm' onClick={() => setIsModalOpenDetail(true)}>
+                            {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm' onClick={() => setIsModalOpenDetail(true)}>
                                 <div className='d-flex justify-content-between align-items-center'>
                                     <div className=' fw-bold'>
                                         #002 - Mr Lee
@@ -195,7 +243,13 @@ const Invoices: React.FC = () => {
                                     <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
                                 <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
-                            </IonCard>
+                            </IonCard> */}
+                            <IonRow className='p-3'>
+                                <img src='../image/not-booking.svg' className='w-100'></img>
+                                <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                                    <div>Không tìm thấy lịch sử</div>
+                                </div>
+                            </IonRow>
                         </div>
                         <div className="tab-pane " id="nav-week">
                             <IonRow className='d-flex align-items-center'>
@@ -239,7 +293,7 @@ const Invoices: React.FC = () => {
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
-                            <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
+                            {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
                                     <div className=' fw-bold'>
                                         #002 - Mr Lee
@@ -256,7 +310,13 @@ const Invoices: React.FC = () => {
                                     <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
                                 <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
-                            </IonCard>
+                            </IonCard> */}
+                            <IonRow className='p-3'>
+                                <img src='../image/not-booking.svg' className='w-100'></img>
+                                <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                                    <div>Không tìm thấy lịch sử</div>
+                                </div>
+                            </IonRow>
                         </div>
                         <div className="tab-pane " id="nav-month">
                             <IonRow className='d-flex align-items-center'>
@@ -300,7 +360,7 @@ const Invoices: React.FC = () => {
                                 <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
-                            <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
+                            {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
                                 <div className='d-flex justify-content-between align-items-center'>
                                     <div className=' fw-bold'>
                                         #002 - Mr Lee
@@ -317,7 +377,13 @@ const Invoices: React.FC = () => {
                                     <div className=' fw-bold'>35.000.000 đ</div>
                                 </div>
                                 <div className='fs-13 '>18:00 29/04/2025 - 23:30 29/04/2025</div>
-                            </IonCard>
+                            </IonCard> */}
+                            <IonRow className='p-3'>
+                                <img src='../image/not-booking.svg' className='w-100'></img>
+                                <div className='mt-3 fs-13 fw-bold d-flex justify-content-center'>
+                                    <div>Không tìm thấy lịch sử</div>
+                                </div>
+                            </IonRow>
                         </div>
                     </form>
 
@@ -504,7 +570,7 @@ const Invoices: React.FC = () => {
                             </select>
                         </IonCol>
                     </IonRow>
-                   
+
                     <IonRow className='my-3'>
                         <button className='bg-pink text-white fs-13 fw-bold p-3 rounded-pill w-100'>{t("xem")}</button>
                     </IonRow>

@@ -226,7 +226,12 @@ const UserProfile: React.FC = () => {
                 </IonRefresher>
                 <IonGrid className='p-3 pt-4'>
                     <IonRow className='d-flex justify-content-center'>
-                        <img src={`https://booking.happycorp.com.vn/${avatar}`} className=' rounded-circle' style={{ width: "40%" }}></img>
+                        {/* {avatar ?
+                            <img src={`https://booking.happycorp.com.vn/${avatar}`} className=' rounded-circle' style={{ width: "40%" }}></img>
+                            : */}
+                            <img src='https://static-cse.canva.com/blob/1992462/1600w-vkBvE1d_xYA.jpg' className=' rounded-circle' style={{ width: "40%" }}></img>
+                         {/* } */}
+
                     </IonRow>
                     <div className='fw-bold fs-4 text-center mt-3'>{account}</div>
                     <div className='text-center fs-15 mt-2'>{email}</div>
@@ -260,13 +265,13 @@ const UserProfile: React.FC = () => {
                             <IonIcon icon={notificationsOutline} className='me-2'></IonIcon> {t("thong-bao")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
-                        <IonRow className='d-flex align-items-center'>
+                        {/* <IonRow className='d-flex align-items-center'>
                             <IonIcon icon={listOutline} className='me-2'></IonIcon> {t("nhat-ky")}
                         </IonRow>
                         <IonRow className='border-50 my-3'></IonRow>
                         <IonRow className='d-flex align-items-center'>
                             <IonIcon icon={settingsOutline} className='me-2'></IonIcon> {t("cai-dat")}
-                        </IonRow>
+                        </IonRow> */}
                     </IonCard>
                 </IonGrid>
 

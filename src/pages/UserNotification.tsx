@@ -25,7 +25,7 @@ const UserNotification: React.FC = () => {
     });
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
+            {/* <IonHeader style={{ backdropFilter: "blur(50px)" }}>
                 <IonToolbar className='shadow-none border border-0'>
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
@@ -40,7 +40,7 @@ const UserNotification: React.FC = () => {
                         </div>
                     </IonRow>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>

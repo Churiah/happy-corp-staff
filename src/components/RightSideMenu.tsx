@@ -96,7 +96,7 @@ const RightSideMenu: React.FC = () => {
                         </Link>
                     </IonMenuToggle>
 
-                    <IonMenuToggle autoHide={true}>
+                    {/* <IonMenuToggle autoHide={true}>
                         <Link to="/user-logs" className='d-flex align-items-center mt-4'>
                             <IonIcon icon={listOutline} className='me-2'></IonIcon>
                             Nhật ký
@@ -108,7 +108,7 @@ const RightSideMenu: React.FC = () => {
                             <IonIcon icon={settingsOutline} className='me-2'></IonIcon>
                             Cài đặt
                         </Link>
-                    </IonMenuToggle>
+                    </IonMenuToggle> */}
 
 
                     <IonRow className='fs-11 mt-4'>

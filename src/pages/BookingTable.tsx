@@ -40,7 +40,7 @@ const BookingTable: React.FC = () => {
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });
-      const menu = [
+    const menu = [
         {
             id: 1,
             name: "Cơm chiên",
@@ -348,7 +348,7 @@ const BookingTable: React.FC = () => {
                                     <button className='rounded-pill bg-secondary text-white fs-13 p-3 w-100' onClick={() => setStep(4)}>{t("quay-lai")}</button>
                                 </IonCol>
                                 <IonCol size='6'>
-                                    <button className='rounded-pill bg-pink text-white fs-13 p-3 w-100' onClick={()=>{success()}}>Hoàn tất</button>
+                                    <button className='rounded-pill bg-pink text-white fs-13 p-3 w-100' onClick={() => { success() }}>Hoàn tất</button>
                                 </IonCol>
                             </IonRow>
                         </>

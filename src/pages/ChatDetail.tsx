@@ -144,16 +144,7 @@ const ChatDetail: React.FC = () => {
     const [content, setContent] = useState("");
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
-                <IonToolbar className='shadow-none border border-0'>
-                    <IonRow className='d-flex align-items-center p-1 py-2'>
-                        <button className='text-center rounded-circle me-3' style={{ width: "35px", height: "35px" }} onClick={() => history.goBack()}>
-                            <IonIcon icon={chevronBackOutline} color='dark' style={{ fontSize: "22px" }} />
-                        </button>
-                        <div className=' fw-bold ' style={{ fontSize: "15px" }}>Mia</div>
-                    </IonRow>
-                </IonToolbar>
-            </IonHeader>
+
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
@@ -233,7 +224,7 @@ const ChatDetail: React.FC = () => {
 
                     </div>
                     <div className="d-flex align-items-center px-2 bg-input-chat  rounded-pill shadow-sm w-100 my-2">
-                       
+
                         <input
                             type="text"
                             className="form-control rounded-5 p-2 border-0 shadow-none bg-input-chat "
@@ -257,7 +248,7 @@ const ChatDetail: React.FC = () => {
                             <IonIcon icon={navigateOutline} color="light" style={{ fontSize: "20px" }} />
                         </button>
                     </div>
-                    
+
                 </IonCard>
             </IonFooter>
 

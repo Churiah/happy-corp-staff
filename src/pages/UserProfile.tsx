@@ -273,6 +273,10 @@ const UserProfile: React.FC = () => {
                             <IonIcon icon={settingsOutline} className='me-2'></IonIcon> {t("cai-dat")}
                         </IonRow> */}
                     </IonCard>
+
+                    <IonRow className='d-flex justify-content-center mt-5'>
+                        <button className='p-2 bg-light rounded-3 fs-13 text-danger'>Xóa tài khoản</button>
+                    </IonRow>
                 </IonGrid>
 
             </IonContent>
@@ -300,7 +304,7 @@ const UserProfile: React.FC = () => {
                             <input type='password' value={passwordConfirm} onChange={(e) => { setPasswordConfirm(e.target.value) }} className='p-3 rounded-4 fs-13 border border-0 shadow-sm bg-secondary bg-opacity-25  w-100' placeholder='Xác nhận mật khẩu'></input>
                         </IonRow>
                         <IonRow className='mt-4'>
-                            <button className='rounded-pill w-100 p-3 bg-pink text-white' onClick={() => { changePassword }}>{t("thay-doi")}</button>
+                            <button className='rounded-pill w-100 p-3 bg-pink text-white' onClick={() => { changePassword() }}>{t("thay-doi")}</button>
                         </IonRow>
                     </IonGrid>
                 </div>

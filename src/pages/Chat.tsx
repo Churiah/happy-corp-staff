@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonModal, useIonPopover } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonMenuToggle, IonModal, IonPage, IonRefresher, IonRefresherContent, IonRow, IonSearchbar, IonSelect, IonSelectOption, IonTitle, IonToolbar, RefresherEventDetail, useIonAlert, useIonModal, useIonPopover } from '@ionic/react';
 import './page.css';
 import { add, arrowBack, arrowForwardCircleOutline, arrowRedoOutline, businessOutline, chevronBackOutline, closeOutline, key, locateOutline, locationSharp, notificationsOutline, remove, searchOutline, sparklesSharp, trashOutline } from 'ionicons/icons';
 import Calendar from 'react-calendar';
@@ -11,7 +11,12 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import BranchModal from '../components/ModalBrand';
 import { useTranslation } from 'react-i18next';
-
+import axios from 'axios';
+type EventContact = {
+    name: string;
+    active: string;
+    avatar: string;
+};
 const Chat: React.FC = () => {
     const history = useHistory();
     const { t, i18n } = useTranslation();
@@ -22,15 +27,54 @@ const Chat: React.FC = () => {
         }, 2000);
     }
 
-    function detail() {
+    function detail(e: string) {
         history.push("/chat-detail");
     }
     const [present, dismiss] = useIonPopover(BranchModal, {
         onDismiss: () => dismiss(),
     });
+
+    const [presentAlert] = useIonAlert();
+    const [listContact, setListContact] = useState<EventContact[]>([]);
+    useEffect(() => {
+        const token = localStorage.getItem("happy-corp-staff-token");
+        const data = {
+            "token": token,
+        }
+        const api = axios.create({
+            baseURL: "https://booking.happycorp.com.vn/api",
+        });
+        api.post("/contact", data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((res) => {
+            if (res.data.status === "error") {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: res.data.content,
+                    buttons: ["OK"],
+                });
+            } else if (res.data.status === "success") {
+                setListContact(res.data.data);
+            }
+        })
+            .catch((error) => {
+                dismiss();
+                presentAlert({
+                    cssClass: 'custom-alert',
+                    header: "ERROR",
+                    message: "Unable to connect to server",
+                    buttons: ["OK"],
+                });
+
+            });
+    }, [])
     return (
         <IonPage>
-            <IonHeader style={{ backdropFilter: "blur(50px)" }}>
+            {/* <IonHeader style={{ backdropFilter: "blur(50px)" }}>
                 <IonToolbar className='shadow-none border border-0'>
                     <IonRow className='d-flex justify-content-between align-items-center p-1'>
                         <img src='../image/happy-corp-logo.png' alt='logo' className='' style={{ width: "70px" }}></img>
@@ -45,7 +89,7 @@ const Chat: React.FC = () => {
                         </div>
                     </IonRow>
                 </IonToolbar>
-            </IonHeader>
+            </IonHeader> */}
             <IonContent fullscreen className='page-background'>
                 <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
                     <IonRefresherContent></IonRefresherContent>
@@ -106,7 +150,7 @@ const Chat: React.FC = () => {
                                 </IonCol>
                             </IonRow>
                             <IonGrid>
-                                <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
+                                <IonRow className='d-flex align-items-center fs-13 mt-3' >
                                     <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                                     <div className='col-10 ms-2'>
                                         <div className='d-flex align-items-center justify-content-between mb-1'>
@@ -123,7 +167,7 @@ const Chat: React.FC = () => {
                                     </div>
                                 </IonRow>
                                 <IonRow className='border-50 my-3'></IonRow>
-                                <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
+                                <IonRow className='d-flex align-items-center fs-13 mt-3' >
                                     <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                                     <div className='col-10 ms-2'>
                                         <div className='d-flex align-items-center justify-content-between mb-1'>
@@ -140,7 +184,7 @@ const Chat: React.FC = () => {
                                     </div>
                                 </IonRow>
                                 <IonRow className='border-50 my-3'></IonRow>
-                                <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
+                                <IonRow className='d-flex align-items-center fs-13 mt-3' >
                                     <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
                                     <div className='col-10 ms-2'>
                                         <div className='d-flex align-items-center justify-content-between mb-1'>
@@ -181,15 +225,22 @@ const Chat: React.FC = () => {
                                 </IonCol>
                             </IonRow>
                             <IonGrid>
-                                <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail() }}>
-                                    <img src='https://happy-booking.eclo.io/datas/avatar/avatar1.png' className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
-                                    <div className='col-10 ms-3'>
-                                        <div className='fs-15 fw-bold mb-1'>
-                                            Mia
-                                        </div>
-                                    </div>
-                                </IonRow>
-                                <IonRow className='border-50 my-3'></IonRow>
+                                {listContact && listContact.map((contact, key) => {
+                                    return (
+                                        <>
+                                            <IonRow className='d-flex align-items-center fs-13 mt-3' onClick={() => { detail(contact.active) }}>
+                                                <img src={`https://booking.happycorp.com.vn/${contact.avatar}`} className='rounded-circle col-2' style={{ width: "45px", height: "45px" }}></img>
+                                                <div className='col-10 ms-3'>
+                                                    <div className='fs-15 fw-bold mb-1'>
+                                                        {contact.name}
+                                                    </div>
+                                                </div>
+                                            </IonRow>
+                                            <IonRow className='border-50 my-3'></IonRow>
+                                        </>
+                                    )
+                                })}
+
                             </IonGrid>
 
                         </IonGrid>

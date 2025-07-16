@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">happy_corp</string>
+    <string name="title_activity_main">happy_corp</string>
+    <string name="package_name">com.eclo.happycorp</string>
+    <string name="custom_url_scheme">com.eclo.happycorp</string>
+</resources>

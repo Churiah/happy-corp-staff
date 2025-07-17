@@ -223,7 +223,7 @@ const Invoices: React.FC = () => {
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
-                                <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
+                                <div className='text-pink fw-bold fs-1'>0</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
                             {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm' onClick={() => setIsModalOpenDetail(true)}>
@@ -290,7 +290,7 @@ const Invoices: React.FC = () => {
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
-                                <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
+                                <div className='text-pink fw-bold fs-1'>0</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
                             {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>
@@ -357,7 +357,7 @@ const Invoices: React.FC = () => {
                                 </IonCol>
                             </IonRow>
                             <IonCard className='rounded-4 p-4 m-0 text-center mt-3 shadow-sm'>
-                                <div className='text-pink fw-bold fs-1'>90.000.000đ</div>
+                                <div className='text-pink fw-bold fs-1'>0</div>
                                 <div className='fs-13 '>{t("tong-doanh-so")}</div>
                             </IonCard>
                             {/* <IonCard className='rounded-4 p-3 m-0 fs-13 mt-3 shadow-sm'>

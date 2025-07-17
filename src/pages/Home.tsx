@@ -298,29 +298,29 @@ const Home: React.FC = () => {
                     <div className="d-flex justify-content-between align-items-center gap-3 mt-3 flex-wrap">
                         <div className="d-flex align-items-center gap-1">
                             <span className="badge bg-primary mb-1" style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Nhật khách</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Nhật khách</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-success mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Thanh toán</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Thanh toán</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-warning mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Đợi khách</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Đợi khách</span>
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center gap-3 mt-2 flex-wrap">
                         <div className="d-flex align-items-center gap-1">
                             <span className="badge bg-info mb-1" style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Chờ duyệt</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Chờ duyệt</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-danger mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Không duyệt</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Không duyệt</span>
                         </div>
                         <div className="d-flex align-items-center gap-1">
                             <span className={`badge bg-secondary mb-1`} style={{ fontSize: "10px" }}> </span>
-                            <span className='fs-13'><span className='fw-bold'>1</span> Đã hủy</span>
+                            <span className='fs-13'><span className='fw-bold'>0</span> Đã hủy</span>
                         </div>
                     </div>
                     <IonRow className='p-3'>

@@ -78,6 +78,10 @@ const Register: React.FC = () => {
                             </div>
                             <Link to="/login" className="text-decoration-none fs-13 fw-bold">{t("dang-nhap")}</Link>
                         </IonRow>
+
+                        <IonRow className="mt-4">
+                            <div className="fs-11 text-muted">Số điện thoại được sử dụng để xác minh tài khoản. Chúng tôi sẽ gửi mã xác nhận SMS.</div>
+                            </IonRow>
                         
                     </IonCard>
                 </IonGrid>

@@ -218,6 +218,11 @@ const UserProfile: React.FC = () => {
 
             });
     }
+
+    const logout = () => {
+        history.push('/login');
+        console.log(123);
+    };
     return (
         <IonPage>
             <IonContent fullscreen className='page-background'>
@@ -275,7 +280,7 @@ const UserProfile: React.FC = () => {
                     </IonCard>
 
                     <IonRow className='d-flex justify-content-center mt-5'>
-                        <button className='p-2 bg-light rounded-3 fs-13 text-danger'>Xóa tài khoản</button>
+                        <button onClick={()=>logout()} className='p-2 bg-light rounded-3 fs-13 text-danger'>Xóa tài khoản</button>
                     </IonRow>
                 </IonGrid>
 
